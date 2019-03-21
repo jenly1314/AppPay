@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AliPay aliPay;
+
         mAppPay = new AppPay(this);
         //支付宝支付监听
         mAppPay.setOnAliPayListener(new AliPay.OnPayListener() {
