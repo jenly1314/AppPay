@@ -1,0 +1,1 @@
+include ':app', ':wxpay', ':alipay', ':apppay'
