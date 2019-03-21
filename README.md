@@ -8,7 +8,7 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
 [![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](http://blog.csdn.net/jenly121)
 
-AppPay for Android 是一个专注于App支付的库，将主流的官方App支付集成方式进行封装、简化，让实现App支付简单到只需一两句代码。
+AppPay for Android 是一个专注于App支付的库，将主流的官方App支付集成方式进行封装、简化，让实现App支付简单到只需几句代码。
 
 > AppPay目前包括的库
 * WXPay 封装的微信支付库，使用起来更简单。
