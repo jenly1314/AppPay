@@ -3,7 +3,7 @@ apply plugin: 'com.novoda.bintray-release'
 //添加
 publish {
     userOrg = 'jenly'//bintray.com用户名
-    groupId = 'com.king.pay'//jcenter上的路径s
+    groupId = 'com.king.pay'//jcenter上的路径
     artifactId = 'alipay'//项目名称
     publishVersion = app_version.versionName//版本号
     desc = 'AppPay for Android'//描述
