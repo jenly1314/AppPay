@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        registerPayResultReceiver();
         mAppPay = new AppPay(this);
         //支付宝支付监听
         mAppPay.setOnAliPayListener(new AliPay.OnPayListener() {
@@ -51,15 +51,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        registerPayResultReceiver();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onDestroy() {
         unregisterPayResultReceiver();
+        super.onDestroy();
     }
 
     /**
