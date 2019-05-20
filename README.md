@@ -154,11 +154,11 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
 
 ## 赞赏
 如果您喜欢AppPay，或感觉AppPay帮助到了您，可以点右上角“Star”支持一下，您的支持就是我的动力，谢谢 :smiley:<p>
-也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
+您也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
     <div>
-        <img src="https://image-1252383324.cos.ap-guangzhou.myqcloud.com/pay/wxpay.png" width="280" heght="350">
-        <img src="https://image-1252383324.cos.ap-guangzhou.myqcloud.com/pay/alipay.png" width="280" heght="350">
-        <img src="https://image-1252383324.cos.ap-guangzhou.myqcloud.com/pay/qqpay.png" width="280" heght="350">
+        <img src="https://jenly1314.github.io/image/pay/wxpay.png" width="280" heght="350">
+        <img src="https://jenly1314.github.io/image/pay/alipay.png" width="280" heght="350">
+        <img src="https://jenly1314.github.io/image/pay/qqpay.png" width="280" heght="350">
     </div>
 
 ## 关于我
@@ -172,7 +172,7 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
 
    加入QQ群: <a title="点击加入QQ群" href="http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad" target="_blank">20867961</a>
    <div>
-       <img src="https://image-1252383324.cos.ap-guangzhou.myqcloud.com/jenly666.png">
-       <img src="https://image-1252383324.cos.ap-guangzhou.myqcloud.com/qqgourp.png">
+       <img src="https://jenly1314.github.io/image/jenly666.png">
+       <img src="https://jenly1314.github.io/image/qqgourp.png">
    </div>
 
