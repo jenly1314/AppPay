@@ -1,7 +1,6 @@
 package com.king.pay.wxpay;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelpay.PayReq;
@@ -16,7 +15,7 @@ public class WXPay {
 
     private IWXAPI mApi;
 
-    public WXPay(@NonNull Context context,@NonNull String appId){
+    public WXPay(Context context,String appId){
         mApi = WXAPIFactory.createWXAPI(context,appId);
 
     }
@@ -25,7 +24,7 @@ public class WXPay {
      * 发送支付请求
      * @param req
      */
-    public void sendReq(@NonNull WXPayReq req){
+    public void sendReq(WXPayReq req){
         PayReq request = new PayReq();
         request.appId = req.getAppId();
         request.partnerId = req.getPartnerId();
@@ -41,7 +40,7 @@ public class WXPay {
      * 发送支付请求
      * @param req
      */
-    private void sendReq(@NonNull BaseReq req){
+    private void sendReq(BaseReq req){
         if(req.checkArgs()){
             mApi.sendReq(req);
         }

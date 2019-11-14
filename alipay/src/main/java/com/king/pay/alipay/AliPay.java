@@ -3,7 +3,6 @@ package com.king.pay.alipay;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.alipay.sdk.app.AuthTask;
@@ -74,7 +73,7 @@ public class AliPay {
      * 发送支付请求，因为订单参数与签名加密前内容关联密切，所以强烈建议服务端直接返回拼接后的orderInfo，使用{@link #sendReq(String)}
      * @param req
      */
-    public void sendReq(@NonNull AliPayReq req){
+    public void sendReq(AliPayReq req){
         sendReq(OrderInfoUtils.buildOrderInfo(req));
     }
 
@@ -82,7 +81,7 @@ public class AliPay {
      * 发送支付请求
      * @param orderInfo
      */
-    public void sendReq(@NonNull final String orderInfo){
+    public void sendReq(final String orderInfo){
         final Runnable payRunnable = new Runnable() {
 
             @Override
@@ -108,7 +107,7 @@ public class AliPay {
      * 支付宝授权业务检测，因为授权参数与签名加密前内容关联密切，所以强烈建议服务端直接返回拼接后的authInfo，使用{@link #checkAuth(String)}
      * @param req
      */
-    public void checkAuth(@NonNull AliAuthReq req){
+    public void checkAuth(AliAuthReq req){
         sendReq(OrderInfoUtils.buildAuthInfo(req));
     }
 
@@ -116,7 +115,7 @@ public class AliPay {
      * 支付宝账户授权业务检测
      * @param authInfo
      */
-    public void checkAuth(@NonNull final String authInfo){
+    public void checkAuth(final String authInfo){
         final Runnable authRunnable = new Runnable() {
 
             @Override

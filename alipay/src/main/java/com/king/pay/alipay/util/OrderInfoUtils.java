@@ -1,5 +1,7 @@
 package com.king.pay.alipay.util;
 
+import android.text.TextUtils;
+
 import com.king.pay.alipay.AliAuthReq;
 import com.king.pay.alipay.AliPayReq;
 
@@ -51,8 +53,9 @@ public class OrderInfoUtils {
 
         keyValues.put("version", req.getVersion());
 
-        keyValues.put("notify_url",req.getNotifyUrl());
-
+        if(!TextUtils.isEmpty(req.getNotifyUrl())){
+            keyValues.put("notify_url",req.getNotifyUrl());
+        }
         keyValues.put("biz_content",req.getBizContent());
 
         return keyValues;
@@ -82,6 +85,8 @@ public class OrderInfoUtils {
         keyValues.put("pid", req.getPid());
         // 服务接口名称
         keyValues.put("apiname", req.getApiname());
+        // 服务接口名称， 固定值
+        keyValues.put("methodname", req.getMethodname());
         // 商户类型标识
         keyValues.put("app_name",req.getAppName());
         // 业务类型
@@ -149,7 +154,6 @@ public class OrderInfoUtils {
         }
         return sb.toString();
     }
-
 
 
 }

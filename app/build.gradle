@@ -34,6 +34,6 @@ dependencies {
 
     implementation project(':apppay')
     //集成AppPay或者AliPay时需依赖alipaySdk
-    implementation (name: 'alipaySdk-15.6.0-20190226104053', ext: 'aar')
+    implementation (name: 'alipaySdk-15.6.8-20191021122514', ext: 'aar')
 }
 

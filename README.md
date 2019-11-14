@@ -2,11 +2,11 @@
 
 ![Image](app/src/main/ic_launcher-web.png)
 
-[![](https://jitpack.io/v/jenly1314/AppPay.svg)](https://jitpack.io/#jenly1314/AppPay)
+[![JitPack](https://jitpack.io/v/jenly1314/AppPay.svg)](https://jitpack.io/#jenly1314/AppPay)
 [![CI](https://travis-ci.org/jenly1314/AppPay.svg?branch=master)](https://travis-ci.org/jenly1314/AppPay)
 [![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
-[![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](http://blog.csdn.net/jenly121)
+[![Blog](https://img.shields.io/badge/blog-Jenly-9933CC.svg)](https://jenly1314.github.io/)
 [![QQGroup](https://img.shields.io/badge/QQGroup-20867961-blue.svg)](http://shang.qq.com/wpa/qunwpa?idkey=8fcc6a2f88552ea44b1411582c94fd124f7bb3ec227e2a400dbbfaad3dc2f5ad)
 
 AppPay for Android 是一个专注于App支付的库，将主流的官方App支付集成方式进行封装、简化，让实现App支付简单到只需几句代码。
@@ -30,7 +30,7 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
     <dependency>
       <groupId>com.king.pay</groupId>
       <artifactId>apppay</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>pom</type>
     </dependency>
     
@@ -38,7 +38,7 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
     <dependency>
       <groupId>com.king.pay</groupId>
       <artifactId>wxpay</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>pom</type>
     </dependency>
     
@@ -46,37 +46,37 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
     <dependency>
       <groupId>com.king.pay</groupId>
       <artifactId>alipay</artifactId>
-      <version>1.0.0</version>
+      <version>1.0.1</version>
       <type>pom</type>
     </dependency>    
 ```
 ### Gradle:
 ```gradle
     //AppPay
-    implementation 'com.king.pay:apppay:1.0.0'
+    implementation 'com.king.pay:apppay:1.0.1'
     
     //WXPay
-    implementation 'com.king.pay:wxpay:1.0.0'
+    implementation 'com.king.pay:wxpay:1.0.1'
 
     //AliPay
-    implementation 'com.king.pay:alipay:1.0.0'
+    implementation 'com.king.pay:alipay:1.0.1'
 ```
 > 注意：当集成涉及到支付宝支付时（即使用了AliPay或者AppPay时），需在您项目中引入alipaySdk依赖，具体详情请参见[App中的build.gradle](app/build.gradle)，在下面的<a href="#record">版本记录</a>中查看AppPay使用alipaySdk对应的版本
 
 ### Lvy:
 ```lvy
     //AppPay
-    <dependency org='com.king.pay' name='wxpay' rev='1.0.0'>
+    <dependency org='com.king.pay' name='wxpay' rev='1.0.1'>
       <artifact name='$AID' ext='pom'></artifact>
     </dependency>
     
     //WXPay
-    <dependency org='com.king.pay' name='wxpay' rev='1.0.0'>
+    <dependency org='com.king.pay' name='wxpay' rev='1.0.1'>
       <artifact name='$AID' ext='pom'></artifact>
     </dependency>
 
     //AliPay
-    <dependency org='com.king.pay' name='alipay' rev='1.0.0'>
+    <dependency org='com.king.pay' name='alipay' rev='1.0.1'>
       <artifact name='$AID' ext='pom'></artifact>
     </dependency>
 ```
@@ -148,6 +148,12 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
 
 ## <a name="record">版本记录</a>
 
+#### v1.0.1 ：2019-11-14
+*  移除support:appcompat-v7依赖
+*  更新微信支付SDK至v5.4.0
+*  更新支付宝支付SDK至v15.6.8 -> [alipaySdk-15.6.8-20191021122514](alipaySdk/alipaySdk-15.6.8-20191021122514.aar)
+
+
 #### v1.0.0 ：2019-3-21
 *  AppPay初始版本
 *  AliPay 依赖AlipaySdk版本 [alipaySdk-15.6.0-20190226104053](alipaySdk/alipaySdk-15.6.0-20190226104053.aar)
@@ -168,6 +174,8 @@ AppPay的的整体结构：包含多个独立封装的子库，每个子库可�
    Email: <a title="欢迎邮件与我交流" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314#gmail.com</a> / <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314#vip.qq.com</a>
 
    CSDN: <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>
+
+   博客园: <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>
 
    Github: <a title="Github开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a>
 

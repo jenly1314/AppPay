@@ -11,6 +11,8 @@ public class AliAuthReq {
     private String pid;
     /** 服务接口名称 */
     private String apiname = "com.alipay.account.auth";
+    /** 服务接口名称， 固定值 */
+    private String methodname = "alipay.open.auth.sdk.code.get";
     /** 商户类型标识 */
     private String appName = "mc";
     /** 业务类型 */
@@ -52,6 +54,15 @@ public class AliAuthReq {
 
     public AliAuthReq setApiname(String apiname) {
         this.apiname = apiname;
+        return this;
+    }
+
+    public String getMethodname(){
+        return methodname;
+    }
+
+    public AliAuthReq setMethodname(String methodname) {
+        this.methodname = methodname;
         return this;
     }
 

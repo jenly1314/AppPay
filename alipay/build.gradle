@@ -34,6 +34,5 @@ dependencies {
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
 
-    compileOnly deps.support.appcompat
-    compileOnly (name: 'alipaySdk-15.6.0-20190226104053', ext: 'aar')
+    compileOnly (name: 'alipaySdk-15.6.8-20191021122514', ext: 'aar')
 }

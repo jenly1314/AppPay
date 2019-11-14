@@ -20,6 +20,7 @@ allprojects {
     repositories {
         flatDir {
             dirs 'libs'
+            dirs '../alipaySdk'
         }
         addRepos(repositories)
     }

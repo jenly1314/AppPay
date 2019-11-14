@@ -2,7 +2,6 @@ package com.king.pay.apppay;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import com.king.pay.alipay.AliAuthReq;
 import com.king.pay.alipay.AliPay;
@@ -16,9 +15,9 @@ import com.king.pay.wxpay.WXPayReq;
  */
 public class AppPay implements IAppPay {
 
-    private WXPay mWXPay;
+    private volatile WXPay mWXPay;
 
-    private AliPay mAliPay;
+    private volatile AliPay mAliPay;
 
     private Activity mActivity;
 
@@ -31,9 +30,13 @@ public class AppPay implements IAppPay {
      * @param context
      * @param appId
      */
-    private void initWXPay(@NonNull Context context,@NonNull String appId){
+    private void initWXPay(Context context, String appId){
         if(mWXPay == null){
-            mWXPay = new WXPay(context,appId);
+            synchronized (AppPay.class){
+                if(mWXPay == null){
+                    mWXPay = new WXPay(context,appId);
+                }
+            }
         }
     }
 
@@ -41,38 +44,42 @@ public class AppPay implements IAppPay {
      * 初始化AliPay
      * @param activity
      */
-    private void initAliPay(@NonNull Activity activity){
+    private void initAliPay(Activity activity){
         if(mAliPay == null){
-            mAliPay = new AliPay(activity);
+            synchronized (AppPay.class){
+                if(mAliPay == null){
+                    mAliPay = new AliPay(activity);
+                }
+            }
         }
     }
 
     @Override
-    public void sendWXPayReq(@NonNull WXPayReq req) {
+    public void sendWXPayReq(WXPayReq req) {
         initWXPay(mActivity,req.getAppId());
         mWXPay.sendReq(req);
     }
 
     @Override
-    public void sendAliPayReq(@NonNull AliPayReq req) {
+    public void sendAliPayReq(AliPayReq req) {
         initAliPay(mActivity);
         mAliPay.sendReq(req);
     }
 
     @Override
-    public void sendAliPayReq(@NonNull String orderInfo) {
+    public void sendAliPayReq(String orderInfo) {
         initAliPay(mActivity);
         mAliPay.sendReq(orderInfo);
     }
 
     @Override
-    public void checkAliAuth(@NonNull AliAuthReq req) {
+    public void checkAliAuth(AliAuthReq req) {
         initAliPay(mActivity);
         mAliPay.checkAuth(req);
     }
 
     @Override
-    public void checkAliAuth(@NonNull String authInfo) {
+    public void checkAliAuth(String authInfo) {
         initAliPay(mActivity);
         mAliPay.checkAuth(authInfo);
     }

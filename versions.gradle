@@ -1,7 +1,7 @@
 //App
 def app_version = [:]
-app_version.versionCode = 1
-app_version.versionName = "1.0.0"
+app_version.versionCode = 2
+app_version.versionName = "1.0.1"
 ext.app_version = app_version
 
 //build version
@@ -41,7 +41,7 @@ test.espresso = "com.android.support.test.espresso:espresso-core:$versions.espre
 deps.test = test
 
 //wechatpay
-deps.wxpay = "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.3.1"
+deps.wxpay = "com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0"
 
 ext.deps = deps
 

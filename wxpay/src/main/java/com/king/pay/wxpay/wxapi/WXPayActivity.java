@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.king.pay.wxpay.R;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
@@ -28,7 +26,7 @@ public abstract class WXPayActivity extends Activity implements IWXAPIEventHandl
     private IWXAPI mApi;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wxpay_activity);
 
@@ -73,7 +71,6 @@ public abstract class WXPayActivity extends Activity implements IWXAPIEventHandl
      * 微信支付AppId （示例：wx****************）
      * @return
      */
-    @NonNull
     public abstract String getAppId();
 
     /**
