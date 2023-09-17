@@ -82,6 +82,7 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 **AliPay** 主要是基于官方的支付宝支付SDK进行二次封装，简化集成步骤；使用 **AliPay** 可快速接入支付宝App支付；
 
 ##### AliPay代码示例
+
 ```Java
     // 初始化支付宝支付
     mAliPay = new AliPay(Activity activity);
@@ -130,11 +131,12 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 ```
 > 使用银联支付时需要在 `Activity` 中的 `onActivityResult` 方法中调用 **UnionPay** 的 **onActivityResult(int, int, Intent)}** 方法，这样设置的银联支付监听才会被触发。
 
-#### AppPay
+### AppPay
 
 **AppPay** 是基于以上所有子库进行整合再次封装，让集成App支付一步到位。
 
 #### AppPay代码示例
+
 ```Java
 
     // 初始化AppPay
@@ -201,7 +203,6 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 3. ..
 
 > 这里我简化了步骤2和步骤3；你创建一个 **WXEntryActivity** 类之后，可以通过继承 **WXPayActivity**；然后实现`getAppId`和`onPayResult`方法就好。你也可以直接复制一份示例app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)类到你项目的 **wxapi** 目录。
-
 
 这里贴出app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)示例：
 
