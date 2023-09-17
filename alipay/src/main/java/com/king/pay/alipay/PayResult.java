@@ -6,8 +6,12 @@ import java.util.Map;
 
 /**
  * 参见支付宝支付的demo
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
+@SuppressWarnings("unused")
 public class PayResult {
     private String resultStatus;
     private String result;

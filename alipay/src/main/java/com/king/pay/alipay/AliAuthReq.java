@@ -1,33 +1,62 @@
 package com.king.pay.alipay;
 
 /**
+ * 授权请求参数
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
+@SuppressWarnings("unused")
 public class AliAuthReq {
 
-    /** 商户签约拿到的app_id */
+    /**
+     * 商户签约拿到的app_id
+     */
     private String appId;
-    /**  商户签约拿到的pid */
+    /**
+     * 商户签约拿到的pid
+     */
     private String pid;
-    /** 服务接口名称 */
+    /**
+     * 服务接口名称
+     */
     private String apiname = "com.alipay.account.auth";
-    /** 服务接口名称， 固定值 */
+    /**
+     * 服务接口名称， 固定值
+     */
     private String methodname = "alipay.open.auth.sdk.code.get";
-    /** 商户类型标识 */
+    /**
+     * 商户类型标识
+     */
     private String appName = "mc";
-    /** 业务类型 */
+    /**
+     * 业务类型
+     */
     private String bizType = "openservice";
-    /** 产品码 */
+    /**
+     * 产品码
+     */
     private String productId = "APP_FAST_LOGIN";
-    /** 授权范围 */
+    /**
+     * 授权范围
+     */
     private String scope = "kuaijie";
-    /** 商户唯一标识 */
+    /**
+     * 商户唯一标识
+     */
     private String targetId;
-    /** 授权类型 */
+    /**
+     * 授权类型
+     */
     private String authType = "AUTHACCOUNT";
-    /** 签名类型 */
+    /**
+     * 签名类型
+     */
     private String signType = "RSA2";
-    /** 签名 */
+    /**
+     * 签名
+     */
     private String sign;
 
     public String getAppId() {
@@ -57,7 +86,7 @@ public class AliAuthReq {
         return this;
     }
 
-    public String getMethodname(){
+    public String getMethodname() {
         return methodname;
     }
 

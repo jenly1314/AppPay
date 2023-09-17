@@ -13,20 +13,25 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 订单信息工具类
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
 public class OrderInfoUtils {
 
-    private OrderInfoUtils(){
+    private OrderInfoUtils() {
         throw new AssertionError();
     }
 
     /**
      * 构造支付订单请求信息
+     *
      * @param req
      * @return
      */
-    public static String buildOrderInfo(AliPayReq req){
+    public static String buildOrderInfo(AliPayReq req) {
         Map<String, String> params = buildOrderInfoParamMap(req);
         return buildParam(params);
     }
@@ -41,38 +46,40 @@ public class OrderInfoUtils {
 
         keyValues.put("method", req.getMethod());
 
-        keyValues.put("format",req.getFormat());
+        keyValues.put("format", req.getFormat());
 
         keyValues.put("charset", req.getCharset());
 
-        keyValues.put("sign_type",req.getSignType());
+        keyValues.put("sign_type", req.getSignType());
 
-        keyValues.put("sign",req.getSign());
+        keyValues.put("sign", req.getSign());
 
         keyValues.put("timestamp", req.getTimestamp());
 
         keyValues.put("version", req.getVersion());
 
-        if(!TextUtils.isEmpty(req.getNotifyUrl())){
-            keyValues.put("notify_url",req.getNotifyUrl());
+        if (!TextUtils.isEmpty(req.getNotifyUrl())) {
+            keyValues.put("notify_url", req.getNotifyUrl());
         }
-        keyValues.put("biz_content",req.getBizContent());
+        keyValues.put("biz_content", req.getBizContent());
 
         return keyValues;
     }
 
     /**
      * 构造授权请求信息
+     *
      * @param req
      * @return
      */
-    public static String buildAuthInfo(AliAuthReq req){
+    public static String buildAuthInfo(AliAuthReq req) {
         Map<String, String> params = buildAuthInfoMap(req);
         return buildParam(params);
     }
 
     /**
      * 构造授权参数集合
+     *
      * @param req
      * @return
      */
@@ -88,11 +95,11 @@ public class OrderInfoUtils {
         // 服务接口名称， 固定值
         keyValues.put("methodname", req.getMethodname());
         // 商户类型标识
-        keyValues.put("app_name",req.getAppName());
+        keyValues.put("app_name", req.getAppName());
         // 业务类型
         keyValues.put("biz_type", req.getBizType());
         // 产品码
-        keyValues.put("product_id",req.getProductId());
+        keyValues.put("product_id", req.getProductId());
         // 授权范围
         keyValues.put("scope", req.getScope());
         // 商户唯一标识

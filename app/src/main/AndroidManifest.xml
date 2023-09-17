@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.king.pay.app">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 集成AppPay需用到的相关权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- 可选；适配应用可见性 -->
+    <!--    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />-->
+
+    <!-- 适配应用可见性：银联支付支持对应各商户相关的App包名 -->
+    <queries>
+        <!-- 云闪付 -->
+        <package android:name="com.unionpay" />
+        <!-- 其他安卓 pay -->
+        <package android:name="com.unionpay.tsmservice" />
+        <!-- 小米 pay -->
+        <package android:name="com.unionpay.tsmservice.mi" />
+        <!-- 华为钱包 -->
+        <package android:name="com.huawei.wallet" />
+        <!-- 平安口袋银行 -->
+        <package android:name="com.cmbc.cc.mbank" />
+        <!-- 中国建设银行 -->
+        <package android:name="com.pingan.paces.ccms" />
+        <!-- 建行生活 -->
+        <package android:name="com.chinamworld.main" />
+        <!-- 中信银行 -->
+        <package android:name="com.ecitic.bank.mobile" />
+        <!-- 动卡空间 -->
+        <package android:name="com.citiccard.mobilebank" />
+        <!-- 光大银行 -->
+        <package android:name="com.cebbank.mobile.cemb" />
+        <!-- 阳光惠生活 -->
+        <package android:name="com.ebank.creditcard" />
+        <!-- 民生银行 -->
+        <package android:name="cn.com.cmbc.newmbank" />
+        <!-- 全民生活 -->
+        <package android:name="com.cmbc.cc.mbank" />
+        <!-- 浦发银行 -->
+        <package android:name="cn.com.spdb.mobilebank.per" />
+        <!-- 浦大喜奔 -->
+        <package android:name="com.spdbccc.app" />
+        <!-- 交通银行 -->
+        <package android:name="com.bankcomm.Bankcomm" />
+        <!-- 买单吧 -->
+        <package android:name="com.bankcomm.maidanba" />
+        <!-- 招商银行 -->
+        <package android:name="cmb.pb" />
+        <!-- 掌上生活 -->
+        <package android:name="com.cmbchina.ccd.pluto.cmbActivity" />
+        <!-- 上海银行 -->
+        <package android:name="cn.com.shbank.mper" />
+        <!-- 上银美好生活 -->
+        <package android:name="cn.com.shbank.pension" />
+        <!-- 北京银行（京彩生活） -->
+        <package android:name="com.bankofbeijing.mobilebanking" />
+        <!-- 掌上京彩 -->
+        <package android:name="com.csii.bj.ui" />
+        <!-- 中国工商银行 -->
+        <package android:name="com.icbc" />
+        <!-- 工银 e 生活 -->
+        <package android:name="com.icbc.elife" />
+        <!-- 中国农业银行 -->
+        <package android:name="com.android.bankabc" />
+        <!-- 农银 e 管家 -->
+        <package android:name="com.abchina.ebizbtob" />
+        <!-- 邮储银行 -->
+        <package android:name="com.yitong.mbank.psbc" />
+        <!-- 邮储信用卡 -->
+        <package android:name="com.yitong.mbank.psbc.creditcard" />
+        <!-- 中国银行 -->
+        <package android:name="com.chinamworld.bocmbci" />
+        <!-- 缤纷生活 -->
+        <package android:name="com.forms" />
+        <!-- 广发银行 -->
+        <package android:name="com.cgbchina.xpt" />
+        <!-- 发现精彩 -->
+        <package android:name="com.cs_credit_bank" />
+        <!-- 兴业银行 -->
+        <package android:name="com.cib.cibmb" />
+        <!-- 好兴动 -->
+        <package android:name="com.cib.xyk" />
+        <!-- 华夏银行 -->
+        <package android:name="com.hxb.mobile.client" />
+        <!-- 华彩生活 -->
+        <package android:name="com.HuaXiaBank.HuaCard" />
+        <!-- 兰州银行 -->
+        <package android:name="cn.com.lzb.mobilebank.per" />
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -17,7 +96,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

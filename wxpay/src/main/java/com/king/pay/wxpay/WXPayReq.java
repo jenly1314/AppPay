@@ -1,23 +1,42 @@
 package com.king.pay.wxpay;
 
 /**
+ * 微信支付请求参数对象
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
+@SuppressWarnings("unused")
 public class WXPayReq {
 
-    /** appId */
+    /**
+     * appId
+     */
     private String appId;
-    /** 商户号 */
+    /**
+     * 商户号
+     */
     private String partnerId;
-    /** 预支付交易会话ID */
+    /**
+     * 预支付交易会话ID
+     */
     private String prepayId;
-    /** 扩展字段 */
+    /**
+     * 扩展字段
+     */
     private String packageValue = "Sign=WXPay";
-    /** 随机字符串 */
+    /**
+     * 随机字符串
+     */
     private String nonceStr;
-    /** 时间戳 */
+    /**
+     * 时间戳
+     */
     private String timestamp;
-    /** 签名*/
+    /**
+     * 签名
+     */
     private String sign;
 
     public WXPayReq() {
@@ -84,5 +103,18 @@ public class WXPayReq {
     public WXPayReq setSign(String sign) {
         this.sign = sign;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "WXPayReq{" +
+                "appId='" + appId + '\'' +
+                ", partnerId='" + partnerId + '\'' +
+                ", prepayId='" + prepayId + '\'' +
+                ", packageValue='" + packageValue + '\'' +
+                ", nonceStr='" + nonceStr + '\'' +
+                ", timestamp='" + timestamp + '\'' +
+                ", sign='" + sign + '\'' +
+                '}';
     }
 }

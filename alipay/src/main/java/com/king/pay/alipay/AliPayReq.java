@@ -2,29 +2,53 @@ package com.king.pay.alipay;
 
 /**
  * 参数说明请参见：<a href="https://docs.open.alipay.com/204/105465/">支付宝支付请求参数说明</a>
+ *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
+@SuppressWarnings("unused")
 public class AliPayReq {
 
-    /** 支付宝支付分配的应用ID */
+    /**
+     * 支付宝支付分配的应用ID
+     */
     private String appId;
-    /** 接口名称 示例值：alipay.trade.app.pay */
+    /**
+     * 接口名称 示例值：alipay.trade.app.pay
+     */
     private String method = "alipay.trade.app.pay";
-    /** 格式 */
+    /**
+     * 格式
+     */
     private String format = "JSON";
-    /** 请求使用的编码格式，如utf-8,gbk,gb2312等 */
+    /**
+     * 请求使用的编码格式，如utf-8,gbk,gb2312等
+     */
     private String charset = "utf-8";
-    /** 签名类型 示例值：RSA2 */
+    /**
+     * 签名类型 示例值：RSA2
+     */
     private String signType = "RSA2";
-    /** 签名 */
+    /**
+     * 签名
+     */
     private String sign;
-    /** 时间戳 */
+    /**
+     * 时间戳
+     */
     private String timestamp;
-    /** 调用的接口版本，固定为：1.0 */
+    /**
+     * 调用的接口版本，固定为：1.0
+     */
     private String version = "1.0";
-    /** 支付宝服务器主动通知商户服务器里指定的页面http/https路径。建议商户使用https */
+    /**
+     * 支付宝服务器主动通知商户服务器里指定的页面http/https路径。建议商户使用https
+     */
     private String notifyUrl;
-    /** 业务请求参数的集合 */
+    /**
+     * 业务请求参数的集合
+     */
     private String bizContent;
 
     public String getAppId() {

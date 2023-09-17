@@ -1,0 +1,2 @@
+-dontwarn com.king.pay.**
+-keep class com.king.pay.** { *; }

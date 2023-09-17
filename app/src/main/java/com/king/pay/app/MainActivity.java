@@ -5,18 +5,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.king.pay.alipay.AliPay;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.king.pay.apppay.AppPay;
 import com.king.pay.wxpay.WXPayReq;
 import com.king.pay.wxpay.wxapi.WXPayActivity;
 
 /**
- * AppPay集成demo
+ * AppPay示例
+ *
+ * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
+ * <p>
+ * <a href="https://github.com/jenly1314">Follow me</a>
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -29,23 +34,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         registerPayResultReceiver();
+
         mAppPay = new AppPay(this);
-        //支付宝支付监听
-        mAppPay.setOnAliPayListener(new AliPay.OnPayListener() {
-            @Override
-            public void onPayResult(boolean isSuccess, String resultInfo) {
-                if(isSuccess){//TODO 支付宝支付成功
-                    //务必以服务端结果为准
-                }
+        // 支付宝支付监听
+        mAppPay.setOnAliPayListener((isSuccess, resultInfo) -> {
+            // 支付结果
+            if (isSuccess) {
+                // TODO 支付成功
+
+                // 务必以服务端结果为准
             }
         });
 
-        mAppPay.setOnAliPayAuthListener(new AliPay.OnAuthListener() {
-            @Override
-            public void onAuthResult(boolean isSuccess, String resultInfo) {
-                if(isSuccess){//TODO  支付宝授权成功
+        // 银联支付监听
+        mAppPay.setOnUnionPayListener((isSuccess, resultInfo) -> {
+            // 支付结果
+            if (isSuccess) {
+                // TODO 支付成功
 
-                }
             }
         });
     }
@@ -56,33 +62,40 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 当使用银联支付时，需要在 Activity 中的 onActivityResult 方法中调用此方法，来接收支付结果监听回调
+        mAppPay.onActivityResult(resultCode, resultCode, data);
+    }
+
     /**
      * 注册广播广播
      */
-    private void registerPayResultReceiver(){
+    private void registerPayResultReceiver() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(WXPayActivity.ACTION_WX_PAY_RESULT);
-        registerReceiver(mPayResultReceiver,filter);
+        registerReceiver(mPayResultReceiver, filter);
     }
 
     /**
      * 注销广播
      */
-    private void unregisterPayResultReceiver(){
+    private void unregisterPayResultReceiver() {
         unregisterReceiver(mPayResultReceiver);
     }
 
     /**
-     * 支付结果广播接收
+     * 支付结果广播接收；用于接收微信支付结果响应
      */
     private BroadcastReceiver mPayResultReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            int code = intent.getIntExtra(WXPayActivity.KEY_CODE,0);
+            int code = intent.getIntExtra(WXPayActivity.KEY_CODE, 0);
             String error = intent.getStringExtra(WXPayActivity.KEY_ERROR);
-            Log.d(TAG,"code=" + code + ",error=" + error);
-            //接收到客户端支付结果，这里一般与服务器同步支付结果，以服务器端的接收的支付通知或查询API返回的结果为准
-            switch (code){
+            Log.d(TAG, "code=" + code + ",error=" + error);
+            // 接收到客户端支付结果，这里一般与服务器同步支付结果，以服务器端的接收的支付通知或查询API返回的结果为准
+            switch (code) {
                 case 0://成功
                     showToast("支付成功");
                     break;
@@ -96,28 +109,33 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void showToast(String text){
-        Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
+    private void showToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 微信支付
+     * <p>
+     * 官方接入文档：https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/Android.html
      */
-    private void clickBtn1(){
-        //TODO  配置好微信支付请求相关的参数,发送微信支付请求，可参见：https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5
-        //微信请求相关属性务必放在服务端，通过预支付下单接口返回相关参数，这样比较安全。
+    private void clickBtnWXPay() {
+        // TODO  配置好微信支付请求相关的参数,发送微信支付请求
+        // 微信请求相关属性务必放在服务端，通过预支付下单接口返回相关参数，这样比较安全。
         WXPayReq req = new WXPayReq();
-//        req.setAppId("");
-//        mAppPay.sendWXPayReq(req);
+//       req.setAppId("");
+//       mAppPay.sendWXPayReq(req);
+
         showToast("请配置微信支付请求相关参数");
     }
 
     /**
      * 支付宝支付
+     * <p>
+     * 官网文档可参见：https://docs.open.alipay.com/204/105296/
      */
-    private void clickBtn2(){
-        //TODO  配置好支付宝支付请求相关的参数,发送支付宝支付请求，可参见：https://docs.open.alipay.com/204/105296/
-        //支付宝支付请求的订单信息，务必放在服务端通过接口返回，这样比较安全。
+    private void clickBtnAliPay() {
+        // TODO  配置好支付宝支付请求订单信息相关的参数,发送支付宝支付请求（订单信息一般从后台获取）
+
 //        String orderInfo = "";
 //        mAppPay.sendAliPayReq(orderInfo);
 
@@ -125,37 +143,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 支付宝授权
+     * 银联支付
      */
-    private void clickBtn3(){
-        //TODO 支付宝授权信息privateKey等数据严禁放在客户端，加签过程务必要放在服务端完成
-        //支付宝授权信息
-//        String authInfo = "";
-//        mAppPay.checkAliAuth(authInfo);
-        showToast("请配置支付宝授权信息");
+    private void clickBtnUnionPay() {
+        // TODO 银联支付；订单信息为交易流水号，即TN，为商户后台从银联后台获取。
+
+//        String orderInfo = "";
+//        mAppPay.sendUnionPayReq(orderInfo);
+
+        showToast("请配置银联支付订单信息");
     }
 
-    private void clickBtn4(){
-        showToast("待续");
-        AliPay aliPay = new AliPay(this);
-
-    }
-
-
-
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.btn1:
-                clickBtn1();
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnWXPay:
+                clickBtnWXPay();
                 break;
-            case R.id.btn2:
-                clickBtn2();
+            case R.id.btnAliPay:
+                clickBtnAliPay();
                 break;
-            case R.id.btn3:
-                clickBtn3();
-                break;
-            case R.id.btn4:
-                clickBtn4();
+            case R.id.btnUnionPay:
+                clickBtnUnionPay();
                 break;
         }
     }
