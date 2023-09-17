@@ -12,14 +12,16 @@
 
 AppPay for Android 是一个专注于App支付的库，将主流的官方App支付集成方式进行二次封装，简化集成步骤，让实现App支付更简单。
 
-**AppPay目前包括的库**
+## AppPay的各Module相关说明
 
-* WXPay：封装的微信支付库。
-* AliPay：封装的支付宝支付库。
-* UnionPay：封装的银联支付库。
-* AppPay：基于以上所有子库进行整合再次封装，让集成App支付一步到位。
+| 模块（子库）               | 模块说明                            |
+|:---------------------|:--------------------------------|
+| [WXPay](wxpay)       | 封装的微信支付库                        |
+| [AliPay](alipay)     | 封装的支付宝支付库                       |
+| [UnionPay](unionpay) | 封装的银联支付库                        |
+| [AppPay](apppay)     | 基于以上所有子库进行整合再次封装，让集成App支付一步到位   |
 
-AppPay的整体结构：将多个独立封装的子库再次封装，并且使用更简单。
+> AppPay的整体结构：将多个独立封装的子库再次封装，并且使用更简单。
 
 ## 结构
 ![Image](image/AppPay_architecture.jpg)
@@ -352,7 +354,7 @@ public class WXPayEntryActivity extends WXPayActivity {
 
 [银联支付Android接入指南](doc/银联支付接入指南Android_v1.0.9.pdf)
 
-## <a name="record">版本记录</a>
+## 版本记录
 
 #### v2.0.0 ：2023-09-17
 * 迁移发布至 MavenCentral
