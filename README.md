@@ -27,19 +27,30 @@ AppPay的整体结构：将多个独立封装的子库再次封装，并且使�
 ## 引入
 
 ### Gradle:
-```gradle
-    // WXPay
-    implementation 'com.github.jenly1314.AppPay:wxpay:2.0.0'
 
-    // AliPay
-    implementation 'com.github.jenly1314.AppPay:alipay:2.0.0'
-    
-    // UnionPay
-    implementation 'com.github.jenly1314.AppPay:unionpay:2.0.0'
-    
-    // AppPay
-    implementation 'com.github.jenly1314.AppPay:apppay:2.0.0'
-```
+1. 在Project的 **build.gradle** 或 **setting.gradle** 中添加远程仓库
+
+    ```gradle
+    repositories {
+        //...
+        mavenCentral()
+    }
+    ```
+
+2. 在Module的 **build.gradle** 里面添加引入依赖项
+   ```gradle
+       // WXPay
+       implementation 'com.github.jenly1314.AppPay:wxpay:2.0.0'
+   
+       // AliPay
+       implementation 'com.github.jenly1314.AppPay:alipay:2.0.0'
+       
+       // UnionPay
+       implementation 'com.github.jenly1314.AppPay:unionpay:2.0.0'
+       
+       // AppPay
+       implementation 'com.github.jenly1314.AppPay:apppay:2.0.0'
+   ```
 
 ## 使用
 
