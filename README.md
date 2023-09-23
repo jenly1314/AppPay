@@ -73,7 +73,7 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 
 ```
 
-> 使用微信支付时微信支付后的响应结果需要在 **WXEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
+> 使用微信支付时微信支付后的响应结果需要在 **WXPayEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
 
 ###  AliPay
 
@@ -175,7 +175,7 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
     mAppPay.sendUnionPayReq(String orderInfo, String serverMode);
 
 ```
-> 使用微信支付时微信支付后的响应结果需要在 **WXEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
+> 使用微信支付时微信支付后的响应结果需要在 **WXPayEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
 
 > 使用银联支付时需要在 `Activity` 中的 `onActivityResult` 方法中调用 **AppPay** 的 **onActivityResult(int, int, Intent)}** 方法，这样设置的银联支付监听才会被触发。
 
@@ -187,22 +187,22 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 
 根据微信支付SDK要求，如果你的程序需要接收微信发送的请求，或者接收发送到微信请求的响应结果；需要下面 3 步操作：
 
-1. 在你的包名相应目录下新建一个 **wxapi** 目录，并在该 **wxapi** 目录下新增一个 **WXEntryActivity** 类，该类继承自Activity；
+1. 在你的包名相应目录下新建一个 **wxapi** 目录，并在该 **wxapi** 目录下新增一个 **WXPayEntryActivity** 类，该类继承自Activity；
 并在 manifest 文件里面加上exported、taskAffinity及launchMode属性，其中exported设置为true，taskAffinity设置为你的包名，launchMode设置为singleTask，例如：
     ```xml
     <activity
-        android:name=".wxapi.WXEntryActivity"
+        android:name=".wxapi.WXPayEntryActivity"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Translucent.NoTitleBar"
         android:exported="true"
-        android:taskAffinity="填写你的包名"
+        android:taskAffinity="${applicationId}"
         android:launchMode="singleTask">
     </activity>
     ```
 2. ..
 3. ..
 
-> 这里我简化了步骤2和步骤3；你创建一个 **WXEntryActivity** 类之后，可以通过继承 **WXPayActivity**；然后实现`getAppId`和`onPayResult`方法就好。你也可以直接复制一份示例app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)类到你项目的 **wxapi** 目录。
+> 这里我简化了步骤2和步骤3；你创建一个 **WXPayEntryActivity** 类之后，可以通过继承 **WXPayActivity**；然后实现`getAppId`和`onPayResult`方法就好。你也可以直接复制一份示例app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)类到你项目的 **wxapi** 目录。
 
 这里贴出app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)示例：
 
