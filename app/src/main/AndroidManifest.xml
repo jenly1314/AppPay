@@ -106,7 +106,9 @@
         </activity>
 
         <activity android:name=".wxapi.WXPayEntryActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+            android:exported="true"
+            android:launchMode="singleTop"/>
+        
     </application>
 
 </manifest>

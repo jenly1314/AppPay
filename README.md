@@ -188,16 +188,11 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 根据微信支付SDK要求，如果你的程序需要接收微信发送的请求，或者接收发送到微信请求的响应结果；需要下面 3 步操作：
 
 1. 在你的包名相应目录下新建一个 **wxapi** 目录，并在该 **wxapi** 目录下新增一个 **WXPayEntryActivity** 类，该类继承自Activity；
-并在 manifest 文件里面加上exported、taskAffinity及launchMode属性，其中exported设置为true，taskAffinity设置为你的包名，launchMode设置为singleTask，例如：
+并在 manifest 文件里面进行注册；例如：
     ```xml
-    <activity
-        android:name=".wxapi.WXPayEntryActivity"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar"
-        android:exported="true"
-        android:taskAffinity="${applicationId}"
-        android:launchMode="singleTask">
-    </activity>
+      <activity android:name=".wxapi.WXPayEntryActivity"
+         android:exported="true"
+         android:launchMode="singleTop"/>
     ```
 2. ..
 3. ..
