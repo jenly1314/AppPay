@@ -12,12 +12,12 @@ import java.util.Map;
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
 @SuppressWarnings("unused")
-public class PayResult {
+public class AliPayResult {
     private String resultStatus;
     private String result;
     private String memo;
 
-    public PayResult(Map<String, String> rawResult) {
+    public AliPayResult(Map<String, String> rawResult) {
         if (rawResult == null) {
             return;
         }
@@ -36,6 +36,15 @@ public class PayResult {
     @Override
     public String toString() {
         return "resultStatus={" + resultStatus + "};memo={" + memo + "};result={" + result + "}";
+    }
+
+    /**
+     * 是否成功；判断resultStatus 为9000则代表支付成功；该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+     *
+     * @return
+     */
+    public boolean isSuccess() {
+        return TextUtils.equals(resultStatus, "9000");
     }
 
     /**

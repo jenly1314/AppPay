@@ -12,7 +12,7 @@ import java.util.Map;
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
 @SuppressWarnings("unused")
-public class AuthResult {
+public class AliAuthResult {
 
     private String resultStatus;
     private String result;
@@ -21,7 +21,7 @@ public class AuthResult {
     private String authCode;
     private String alipayOpenId;
 
-    public AuthResult(Map<String, String> rawResult, boolean removeBrackets) {
+    public AliAuthResult(Map<String, String> rawResult, boolean removeBrackets) {
         if (rawResult == null) {
             return;
         }
@@ -70,6 +70,15 @@ public class AuthResult {
     @Override
     public String toString() {
         return "authCode={" + authCode + "}; resultStatus={" + resultStatus + "}; memo={" + memo + "}; result={" + result + "}";
+    }
+
+    /**
+     * 是否成功；判断resultStatus 为“9000”且result_code为“200”则代表授权成功，具体状态码代表含义可参考授权接口文档
+     *
+     * @return
+     */
+    public boolean isSuccess() {
+        return TextUtils.equals(resultStatus, "9000") && TextUtils.equals(resultCode, "200");
     }
 
     private String getValue(String header, String data) {

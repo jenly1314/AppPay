@@ -105,10 +105,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop"/>
-        
     </application>
 
 </manifest>

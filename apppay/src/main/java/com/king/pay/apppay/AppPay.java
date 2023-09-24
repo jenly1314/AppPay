@@ -35,13 +35,12 @@ public class AppPay implements IAppPay {
      * 初始化WXPay
      *
      * @param context
-     * @param appId
      */
-    private void initWXPay(Context context, String appId) {
+    private void initWXPay(Context context) {
         if (mWXPay == null) {
             synchronized (AppPay.class) {
                 if (mWXPay == null) {
-                    mWXPay = new WXPay(context, appId);
+                    mWXPay = new WXPay(context);
                 }
             }
         }
@@ -79,7 +78,11 @@ public class AppPay implements IAppPay {
 
     @Override
     public void sendWXPayReq(WXPayReq req) {
-        getWXPay(req.getAppId()).sendReq(req);
+        getWXPay().sendReq(req);
+    }
+
+    public void sendWXPayReq(WXPayReq req, WXPay.OnPayListener listener) {
+        getWXPay().sendReq(req, listener);
     }
 
     @Override
@@ -88,8 +91,18 @@ public class AppPay implements IAppPay {
     }
 
     @Override
+    public void sendAliPayReq(String orderInfo, AliPay.OnPayListener listener) {
+        getAliPay().sendReq(orderInfo, listener);
+    }
+
+    @Override
     public void checkAliAuth(String authInfo) {
         getAliPay().checkAuth(authInfo);
+    }
+
+    @Override
+    public void checkAliAuth(String authInfo, AliPay.OnAuthListener listener) {
+        getAliPay().checkAuth(authInfo, listener);
     }
 
     @Override
@@ -98,8 +111,29 @@ public class AppPay implements IAppPay {
     }
 
     @Override
+    public void sendUnionPayReq(String orderInfo, UnionPay.OnPayListener listener) {
+        getUnionPay().sendReq(orderInfo, UnionPay.PRO_SERVER_MODE, listener);
+    }
+
+    @Override
     public void sendUnionPayReq(String orderInfo, String serverMode) {
         getUnionPay().sendReq(orderInfo, serverMode);
+    }
+
+    @Override
+    public void sendUnionPayReq(String orderInfo, String serverMode, UnionPay.OnPayListener listener) {
+        getUnionPay().sendReq(orderInfo, serverMode, listener);
+    }
+
+    /**
+     * 设置微信支付监听
+     *
+     * @param listener
+     * @return
+     */
+    public AppPay setOnWXPayListener(WXPay.OnPayListener listener) {
+        getWXPay().setOnPayListener(listener);
+        return this;
     }
 
     /**
@@ -159,11 +193,10 @@ public class AppPay implements IAppPay {
     /**
      * 获取 WXPay
      *
-     * @param appId
      * @return
      */
-    public WXPay getWXPay(String appId) {
-        initWXPay(mActivity, appId);
+    public WXPay getWXPay() {
+        initWXPay(mActivity);
         return mWXPay;
     }
 

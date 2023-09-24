@@ -42,16 +42,16 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 2. 在Module的 **build.gradle** 里面添加引入依赖项
    ```gradle
        // WXPay
-       implementation 'com.github.jenly1314.AppPay:wxpay:2.0.0'
+       implementation 'com.github.jenly1314.AppPay:wxpay:2.1.0'
    
        // AliPay
-       implementation 'com.github.jenly1314.AppPay:alipay:2.0.0'
+       implementation 'com.github.jenly1314.AppPay:alipay:2.1.0'
        
        // UnionPay
-       implementation 'com.github.jenly1314.AppPay:unionpay:2.0.0'
+       implementation 'com.github.jenly1314.AppPay:unionpay:2.1.0'
        
        // AppPay
-       implementation 'com.github.jenly1314.AppPay:apppay:2.0.0'
+       implementation 'com.github.jenly1314.AppPay:apppay:2.1.0'
    ```
 
 ## 使用
@@ -65,15 +65,38 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 ##### WXPay代码示例
 
 ```Java
-    // 初始化微信支付
-    mWXPay = new WXPay(Context context, String appId);
+// 初始化微信支付
+mWXPay = new WXPay(Context context);
 
-    // 发送微信支付请求
-    mWXPay.sendReq(WXPayReq req);
+// 设置微信支付监听
+mWXPay.setOnPayListener(new WXPay.OnPayListener() {
+   @Override
+   public void onPayResult(WXPayResult result) {
+      // 支付结果
+      if (result.isSuccess()) {
+         // TODO 支付成功
+      }
+   }
+});
+
+// 发送微信支付请求
+mWXPay.sendReq(WXPayReq req);
 
 ```
+或
 
-> 使用微信支付时微信支付后的响应结果需要在 **WXPayEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
+```Java
+// 发送微信支付请求并监听（参数：req为拉起支付的请求参数）
+mWXPay.sendReq(req, new WXPay.OnPayListener() {
+   @Override
+   public void onPayResult(WXPayResult result) {
+        // 支付结果
+        if (result.isSuccess()) {
+            // TODO 支付成功
+        }
+    }
+});
+```
 
 ###  AliPay
 
@@ -84,23 +107,36 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 ##### AliPay代码示例
 
 ```Java
-    // 初始化支付宝支付
-    mAliPay = new AliPay(Activity activity);
+ // 初始化支付宝支付
+ mAliPay = new AliPay(Activity activity);
 
-    // 设置支付宝支付监听
-    mAliPay.setOnPayListener(new AliPay.OnPayListener() {
-        @Override
-        public void onPayResult(boolean isSuccess, String resultInfo) {
-            // 支付结果
-            if(isSuccess){
-                //TODO 支付成功
-            }
+ // 设置支付宝支付监听
+ mAliPay.setOnPayListener(new AliPay.OnPayListener() {
+     @Override
+     public void onPayResult(AliPayResult result) {
+         // 支付结果
+         if(result.isSuccess()){
+             //TODO 支付成功
+         }
+     }
+ });
+
+ // 发送支付宝支付请求；
+ mAliPay.sendReq(String orderInfo);
+
+```
+或
+```Java
+// 发送支付宝支付请求并监听（参数：orderInfo为拉起支付的订单信息）
+mAliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
+    @Override
+    public void onPayResult(AliPayResult result) {
+        // 支付结果
+        if(result.isSuccess()){
+            //TODO 支付成功
         }
-    });
-
-    // 发送支付宝支付请求；
-    mAliPay.sendReq(String orderInfo);
-
+    }
+});
 ```
 
 ### UnionPay
@@ -112,23 +148,37 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 #### UnionPay代码示例
 
 ```java
-    // 初始化银联支付
-    mUnionPay = new UnionPay(Activity activity);
-    
-    // 设置银联支付监听
-    mUnionPay.setOnPayListener(new UnionPay.OnPayListener() {
-        @Override
-        public void onPayResult(boolean isSuccess, String resultInfo) {
-            // 支付结果
-            if(isSuccess){
-                //TODO 支付成功
-            }
-        }
-    });
-    
-    // 发送银联支付请求；（参数：serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
-    mUnionPay.sendReq(String orderInfo, String serverMode);
+ // 初始化银联支付
+ mUnionPay = new UnionPay(Context context);
+ 
+ // 设置银联支付监听
+ mUnionPay.setOnPayListener(new UnionPay.OnPayListener() {
+     @Override
+     public void onPayResult(UnionPayResult result) {
+         // 支付结果
+         if(result.isSuccess()){
+             //TODO 支付成功
+         }
+     }
+ });
+ 
+ // 发送银联支付请求；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
+ mUnionPay.sendReq(String orderInfo, String serverMode);
 ```
+或 
+```java
+// 发送银联支付请求并监听；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
+mUnionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
+    @Override
+    public void onPayResult(UnionPayResult result) {
+        // 支付结果
+        if(result.isSuccess()){
+            //TODO 支付成功
+        }
+    }
+});
+```
+
 > 使用银联支付时需要在 `Activity` 中的 `onActivityResult` 方法中调用 **UnionPay** 的 **onActivityResult(int, int, Intent)}** 方法，这样设置的银联支付监听才会被触发。
 
 ### AppPay
@@ -139,95 +189,51 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 
 ```Java
 
-    // 初始化AppPay
-    mAppPay = new AppPay(Activity activity);
+ // 初始化AppPay
+ mAppPay = new AppPay(Activity activity);
 
-    // 发送微信支付请求
-    mAppPay.sendWXPayReq(WXPayReq req);
-    
-    // 设置支付宝支付监听
-    mAppPay.setOnAliPayListener(new AliPay.OnPayListener() {
-        @Override
-        public void onPayResult(boolean isSuccess, String resultInfo) {
-            // 支付结果
-            if(isSuccess){
-                //TODO 支付成功
-            }
-        }
-    });
-    
-    // 发送支付宝支付请求
-    mAppPay.sendAliPayReq(String orderInfo);
-    
+// 发送微信支付请求（参数：req为拉起支付的请求参数）
+mAppPay.sendWXPayReq(req, new WXPay.OnPayListener() {
+    @Override 
+    public void onPayResult(WXPayResult result) {
+         // 支付结果
+         if (result.isSuccess()) {
+            // TODO 支付成功
+         }
+    }
+});
 
-    // 设置银联支付监听
-    mAppPay.setOnUnionPayListener(new UnionPay.OnPayListener() {
-        @Override
-        public void onPayResult(boolean isSuccess, String resultInfo) {
-            // 支付结果
-            if(isSuccess){
-                // TODO 支付成功
-            }
-        }
-    });
 
-    // 发送银联支付请求（参数：serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
-    mAppPay.sendUnionPayReq(String orderInfo, String serverMode);
+// 发送支付宝支付请求（参数：orderInfo为拉起支付的订单信息）
+mAppPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
+    @Override 
+    public void onPayResult(AliPayResult result) {
+         // 支付结果
+         if (result.isSuccess()) {
+            // TODO 支付成功
+         }
+    }
+});
+
+
+// 发送银联支付请求（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
+mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
+    @Override 
+    public void onPayResult(UnionPayResult result) {
+         // 支付结果
+         if (result.isSuccess()) {
+            // TODO 支付成功
+         }
+    }
+});
 
 ```
-> 使用微信支付时微信支付后的响应结果需要在 **WXPayEntryActivity** 类中去处理，这里只是提示，后面有具体的说明。
 
 > 使用银联支付时需要在 `Activity` 中的 `onActivityResult` 方法中调用 **AppPay** 的 **onActivityResult(int, int, Intent)}** 方法，这样设置的银联支付监听才会被触发。
 
 更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AppPay/latest/javadoc/)
 
 ## 补充说明
-
-### 关于微信支付结果回调
-
-根据微信支付SDK要求，如果你的程序需要接收微信发送的请求，或者接收发送到微信请求的响应结果；需要下面 3 步操作：
-
-1. 在你的包名相应目录下新建一个 **wxapi** 目录，并在该 **wxapi** 目录下新增一个 **WXPayEntryActivity** 类，该类继承自Activity；
-并在 manifest 文件里面进行注册；例如：
-    ```xml
-      <activity android:name=".wxapi.WXPayEntryActivity"
-         android:exported="true"
-         android:launchMode="singleTop"/>
-    ```
-2. ..
-3. ..
-
-> 这里我简化了步骤2和步骤3；你创建一个 **WXPayEntryActivity** 类之后，可以通过继承 **WXPayActivity**；然后实现`getAppId`和`onPayResult`方法就好。你也可以直接复制一份示例app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)类到你项目的 **wxapi** 目录。
-
-这里贴出app中的[WXPayEntryActivity](app/src/main/java/com/king/pay/app/wxapi)示例：
-
-```java
-public class WXPayEntryActivity extends WXPayActivity {
-
-    @Override
-    public String getAppId() {
-        // TODO 此处填写微信支付申请的AppID
-        return "{your appId}";
-    }
-
-    /**
-     * 支付结果，注意一定不能以客户端返回作为用户支付的结果，应以服务器端的接收的支付通知或查询API返回的结果为准
-     *
-     * @param code  0.成功
-     *              -1.错误
-     *              -2.用户取消
-     * @param error 错误描述
-     */
-    @Override
-    public void onPayResult(int code, String error) {
-        // TODO 支付结果；此处可通过发送广播或者其他方式将支付结果发送出去
-
-        // 示例：通过广播发送支付结果，然后在 MainActivity 中接收
-        sendPayResultBroadcast(code, error);
-    }
-}
-```
-> 记得 **WXPayEntryActivity** 需要放在你项目包名的 **wxapi** 目录下，这一点很重要。
 
 ### 关于银联支付相关的应用可见性适配
 
@@ -351,6 +357,10 @@ public class WXPayEntryActivity extends WXPayActivity {
 [银联支付Android接入指南](doc/银联支付接入指南Android_v1.0.9.pdf)
 
 ## 版本记录
+
+#### v2.1.0 ：2023-09-24
+* 简化集成步骤
+* 优化细节（统一结果判定）
 
 #### v2.0.0 ：2023-09-17
 * 迁移发布至 MavenCentral
