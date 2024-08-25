@@ -22,7 +22,7 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 > AppPay的整体结构：将多个独立封装的子库再次封装，并且使用更简单。
 
 ## 结构
-![Image](image/AppPay_architecture.jpg)
+![Image](art/AppPay_architecture.jpg)
 
 ## 引入
 
@@ -41,13 +41,13 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
    ```gradle
        // WXPay
        implementation 'com.github.jenly1314.AppPay:wxpay:2.1.0'
-   
+
        // AliPay
        implementation 'com.github.jenly1314.AppPay:alipay:2.1.0'
-       
+
        // UnionPay
        implementation 'com.github.jenly1314.AppPay:unionpay:2.1.0'
-       
+
        // AppPay
        implementation 'com.github.jenly1314.AppPay:apppay:2.1.0'
    ```
@@ -148,7 +148,7 @@ mAliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
 ```java
  // 初始化银联支付
  mUnionPay = new UnionPay(Context context);
- 
+
  // 设置银联支付监听
  mUnionPay.setOnPayListener(new UnionPay.OnPayListener() {
      @Override
@@ -159,11 +159,11 @@ mAliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
          }
      }
  });
- 
+
  // 发送银联支付请求；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
  mUnionPay.sendReq(String orderInfo, String serverMode);
 ```
-或 
+或
 ```java
 // 发送银联支付请求并监听；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
 mUnionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
@@ -192,7 +192,7 @@ mUnionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 // 发送微信支付请求（参数：req为拉起支付的请求参数）
 mAppPay.sendWXPayReq(req, new WXPay.OnPayListener() {
-    @Override 
+    @Override
     public void onPayResult(WXPayResult result) {
          // 支付结果
          if (result.isSuccess()) {
@@ -204,7 +204,7 @@ mAppPay.sendWXPayReq(req, new WXPay.OnPayListener() {
 
 // 发送支付宝支付请求（参数：orderInfo为拉起支付的订单信息）
 mAppPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
-    @Override 
+    @Override
     public void onPayResult(AliPayResult result) {
          // 支付结果
          if (result.isSuccess()) {
@@ -216,7 +216,7 @@ mAppPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
 
 // 发送银联支付请求（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
 mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
-    @Override 
+    @Override
     public void onPayResult(UnionPayResult result) {
          // 支付结果
          if (result.isSuccess()) {
@@ -229,7 +229,7 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 > 使用银联支付时需要在 `Activity` 中的 `onActivityResult` 方法中调用 **AppPay** 的 **onActivityResult(int, int, Intent)}** 方法，这样设置的银联支付监听才会被触发。
 
-更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jitpack.io/com/github/jenly1314/AppPay/latest/javadoc/)
+更多使用详情，请查看[app](app)中的源码使用示例或直接查看 [API帮助文档](https://jenly1314.github.io/AppPay/api/)
 
 ## 补充说明
 
@@ -336,9 +336,9 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 ```gradle
     defaultConfig {
-    
+
         //...
-        
+
         ndk {
             //设置支持的 SO 库架构（开发者可以根据需要，选择一个或多个平台的 so）
             abiFilters 'armeabi-v7a' // , 'arm64-v8a', 'x86', 'x86_64'
@@ -354,28 +354,15 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 [银联支付Android接入指南](doc/银联支付接入指南Android_v1.0.9.pdf)
 
-## 版本记录
+<!-- end -->
+
+## 版本日志
 
 #### v2.1.0 ：2023-09-24
 * 简化集成步骤
 * 优化细节（统一结果判定）
 
-#### v2.0.0 ：2023-09-17
-* 迁移发布至 MavenCentral
-* 新增子库UnionPay（银联支付）
-* 更新支付宝支付SDK依赖至v15.8.16（支付宝支付从AAR依赖更新为从Maven依赖）
-* 更新微信支付SDK依赖至v6.8.24
-* 更新Gradle至v7.3.3
-* 更新compileSdk至32
-
-#### v1.0.1 ：2019-11-14 （之前发布的版本是在JCenter）
-* 移除support:appcompat-v7依赖
-* 更新微信支付SDK依赖至v5.4.0
-* 更新支付宝支付SDK依赖至v15.6.8（alipaySdk-15.6.8-20191021122514）
-
-#### v1.0.0 ：2019-3-21
-* AppPay初始版本
-* AliPay 依赖AlipaySdk版本（alipaySdk-15.6.0-20190226104053）
+#### [查看更多日志](CHANGELOG.md)
 
 ## 赞赏
 如果您喜欢AppPay，或感觉AppPay帮助到了您，可以点右上角“Star”支持一下，您的支持就是我的动力，谢谢 :smiley:
