@@ -2,11 +2,13 @@
 
 ![Image](app/src/main/ic_launcher-web.png)
 
-[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314.AppPay/apppay)](https://repo1.maven.org/maven2/com/github/jenly1314/AppPay)
-[![JitPack](https://jitpack.io/v/jenly1314/AppPay.svg)](https://jitpack.io/#jenly1314/AppPay)
-[![CircleCI](https://circleci.com/gh/jenly1314/AppPay.svg?style=svg)](https://circleci.com/gh/jenly1314/AppPay)
-[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/mit-license.php)
+[![MavenCentral](https://img.shields.io/maven-central/v/com.github.jenly1314.AppPay/apppay?logo=sonatype)](https://repo1.maven.org/maven2/com/github/jenly1314/AppPay)
+[![JitPack](https://img.shields.io/jitpack/v/github/jenly1314/AppPay?logo=jitpack)](https://jitpack.io/#jenly1314/AppPay)
+[![CI](https://img.shields.io/github/actions/workflow/status/jenly1314/AppPay/build.yml?logo=github)](https://github.com/jenly1314/AppPay/actions/workflows/build.yml)
+[![Download](https://img.shields.io/badge/download-APK-brightgreen?logo=github)](https://raw.githubusercontent.com/jenly1314/AppPay/master/app/release/app-release.apk)
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen?logo=android)](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)
+[![License](https://img.shields.io/github/license/jenly1314/AppPay?logo=open-source-initiative)](https://opensource.org/licenses/mit)
+
 
 AppPay for Android 是一个专注于App支付的库，将主流的官方App支付集成方式进行二次封装，简化集成步骤，让实现App支付更简单。
 
@@ -37,7 +39,7 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
     }
     ```
 
-2. 在Module的 **build.gradle** 里面添加引入依赖项
+2. 在Module的 **build.gradle** 中添加依赖项
    ```gradle
        // WXPay
        implementation 'com.github.jenly1314.AppPay:wxpay:2.1.0'
@@ -346,6 +348,20 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
     }
 ```
 
+## 相关推荐
+- [AppUpdater](http://github.com/jenly1314/AppUpdater) 一个专注于App更新，一键傻瓜式集成App版本升级的轻量开源库。
+- [RetrofitHelper](http://github.com/jenly1314/RetrofitHelper) 一个支持动态改变BaseUrl，动态配置超时时长的Retrofit帮助类。
+- [BaseUrlManager](http://github.com/jenly1314/BaseUrlManager) 一个BaseUrl管理器，主要用于打测试包时，一个App可动态切换到不同的开发环境或测试环境。
+- [SuperTextView](http://github.com/jenly1314/SuperTextView) 一个在TextView的基础上扩展了几种动画效果的控件。
+- [ImageViewer](http://github.com/AndroidKTX/ImageViewer) 一个图片查看器，一般用来查看图片详情或查看大图时使用。
+- [GuidePage](http://github.com/AndroidKTX/GuidePage) 一个App欢迎引导页。一般用于首次打开App时场景，通过引导页指南，概述App特色等相关信息。
+- [LogX](http://github.com/jenly1314/LogX) 一个轻量而强大的日志框架；好用不解释。
+- [KVCache](http://github.com/jenly1314/KVCache) 一个便于统一管理的键值缓存库；支持无缝切换缓存实现。
+- [AndroidKTX](http://github.com/AndroidKTX/AndroidKTX) 一个简化 Android 开发的 Kotlin 工具类集合。
+- [AndroidUtil](http://github.com/AndroidUtil/AndroidUtil) 一个整理了Android常用工具类集合，平时在开发的过程中可能会经常用到。
+- [MVVMFrame](https://github.com/jenly1314/MVVMFrame) 一个基于Google官方推出的JetPack构建的MVVM快速开发框架。
+- [AppTemplate](https://github.com/jenly1314/AppTemplate) 一款基于 MVVMFrame 构建的App模板。
+
 ## 官方文档
 
 [微信支付Android接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/Android.html)
@@ -364,27 +380,8 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 #### [查看更多日志](CHANGELOG.md)
 
-## 赞赏
-如果您喜欢AppPay，或感觉AppPay帮助到了您，可以点右上角“Star”支持一下，您的支持就是我的动力，谢谢 :smiley:
-<p>您也可以扫描下面的二维码，请作者喝杯咖啡 :coffee:
 
-<div>
-   <img src="https://jenly1314.github.io/image/page/rewardcode.png">
-</div>
+---
 
-## 关于我
-
-| 我的博客                                                                                | GitHub                                                                                  | Gitee                                                                                  | CSDN                                                                                 | 博客园                                                                            |
-|:------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------|
-| <a title="我的博客" href="https://jenly1314.github.io" target="_blank">Jenly's Blog</a> | <a title="GitHub开源项目" href="https://github.com/jenly1314" target="_blank">jenly1314</a> | <a title="Gitee开源项目" href="https://gitee.com/jenly1314" target="_blank">jenly1314</a>  | <a title="CSDN博客" href="http://blog.csdn.net/jenly121" target="_blank">jenly121</a>  | <a title="博客园" href="https://www.cnblogs.com/jenly" target="_blank">jenly</a>  |
-
-## 联系我
-
-| 微信公众号        | Gmail邮箱                                                                          | QQ邮箱                                                                              | QQ群                                                                                                                       | QQ群                                                                                                                       |
-|:-------------|:---------------------------------------------------------------------------------|:----------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|
-| [Jenly666](http://weixin.qq.com/r/wzpWTuPEQL4-ract92-R) | <a title="给我发邮件" href="mailto:jenly1314@gmail.com" target="_blank">jenly1314</a> | <a title="给我发邮件" href="mailto:jenly1314@vip.qq.com" target="_blank">jenly1314</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=6_RukjAhwjAdDHEk2G7nph-o8fBFFzZz" target="_blank">20867961</a> | <a title="点击加入QQ群" href="https://qm.qq.com/cgi-bin/qm/qr?k=Z9pobM8bzAW7tM_8xC31W8IcbIl0A-zT" target="_blank">64020761</a> |
-
-<div>
-   <img src="https://jenly1314.github.io/image/page/footer.png">
-</div>
+![footer](https://jenly1314.github.io/page/footer.svg)
 
