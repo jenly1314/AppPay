@@ -3,18 +3,18 @@ compileSdk = "32"
 minSdk = "21"
 targetSdk = "32"
 
-agp = "7.2.1"
+agp = "8.1.2"
 kotlin = "1.7.0"
 dokka = "1.9.20"
-mavenPublish = "0.22.0"
+mavenPublish = "0.34.0"
 
 appcompat = "1.2.0"
 constraintLayout = "2.0.4"
 junit = "4.13.2"
 androidExtJunit = "1.1.3"
 espressoCore = "3.4.0"
-alipaysdk = "15.8.16"
-wechatSdk = "6.8.24"
+alipaysdk = "15.8.42"
+wechatSdk = "6.8.34"
 
 [libraries]
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
