@@ -1,0 +1,33 @@
+[versions]
+compileSdk = "32"
+minSdk = "21"
+targetSdk = "32"
+
+agp = "7.2.1"
+kotlin = "1.7.0"
+dokka = "1.9.20"
+mavenPublish = "0.22.0"
+
+appcompat = "1.2.0"
+constraintLayout = "2.0.4"
+junit = "4.13.2"
+androidExtJunit = "1.1.3"
+espressoCore = "3.4.0"
+alipaysdk = "15.8.16"
+wechatSdk = "6.8.24"
+
+[libraries]
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintLayout" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidExtJunit" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+alipay-sdk = { group = "com.alipay.sdk", name = "alipaysdk-android", version.ref = "alipaysdk" }
+wechat-sdk = { group = "com.tencent.mm.opensdk", name = "wechat-sdk-android", version.ref = "wechatSdk" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
