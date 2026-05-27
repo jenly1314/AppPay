@@ -11,8 +11,8 @@ android {
         applicationId = "com.king.pay.app"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = properties["VERSION_CODE"].toString().toInt()
-        versionName = properties["VERSION_NAME"].toString()
+        versionCode = properties["VERSION_CODE"]?.toString()?.toInt() ?: 1
+        versionName = properties["VERSION_NAME"]?.toString() ?: "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -31,7 +31,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "1.8"
     }
     lint {
         abortOnError = false
