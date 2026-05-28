@@ -107,16 +107,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnWXPay:
-                clickBtnWXPay();
-                break;
-            case R.id.btnAliPay:
-                clickBtnAliPay();
-                break;
-            case R.id.btnUnionPay:
-                clickBtnUnionPay();
-                break;
+        int id = v.getId();
+        if (id == R.id.btnWXPay) {
+            clickBtnWXPay();
+        } else if (id == R.id.btnAliPay) {
+            clickBtnAliPay();
+        } else if (id == R.id.btnUnionPay) {
+            clickBtnUnionPay();
         }
     }
 }
