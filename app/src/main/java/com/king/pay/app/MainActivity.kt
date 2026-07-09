@@ -29,7 +29,7 @@ open class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // 当使用银联支付时，需要在 Activity 中的 onActivityResult 方法中调用此方法，来接收支付结果监听回调
-        mAppPay.onActivityResult(resultCode, resultCode, data)
+        mAppPay.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun showToast(text: String) {
