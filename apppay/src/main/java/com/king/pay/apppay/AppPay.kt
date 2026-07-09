@@ -70,7 +70,7 @@ open class AppPay(private var mActivity: Activity) : IAppPay {
         getWXPay().sendReq(req)
     }
 
-    fun sendWXPayReq(req: WXPayReq, listener: WXPay.OnPayListener) {
+    override fun sendWXPayReq(req: WXPayReq, listener: WXPay.OnPayListener) {
         getWXPay().sendReq(req, listener)
     }
 
