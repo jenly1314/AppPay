@@ -82,51 +82,27 @@ open class AliAuthReq {
     var sign: String? = null
         private set
 
-    fun getAppId(): String? = appId
-
     fun setAppId(appId: String?): AliAuthReq = apply { this.appId = appId }
-
-    fun getPid(): String? = pid
 
     fun setPid(pid: String?): AliAuthReq = apply { this.pid = pid }
 
-    fun getApiname(): String? = apiname
-
     fun setApiname(apiname: String?): AliAuthReq = apply { this.apiname = apiname }
-
-    fun getMethodname(): String? = methodname
 
     fun setMethodname(methodname: String?): AliAuthReq = apply { this.methodname = methodname }
 
-    fun getAppName(): String? = appName
-
     fun setAppName(appName: String?): AliAuthReq = apply { this.appName = appName }
-
-    fun getBizType(): String? = bizType
 
     fun setBizType(bizType: String?): AliAuthReq = apply { this.bizType = bizType }
 
-    fun getProductId(): String? = productId
-
     fun setProductId(productId: String?): AliAuthReq = apply { this.productId = productId }
-
-    fun getScope(): String? = scope
 
     fun setScope(scope: String?): AliAuthReq = apply { this.scope = scope }
 
-    fun getTargetId(): String? = targetId
-
     fun setTargetId(targetId: String?): AliAuthReq = apply { this.targetId = targetId }
-
-    fun getAuthType(): String? = authType
 
     fun setAuthType(authType: String?): AliAuthReq = apply { this.authType = authType }
 
-    fun getSignType(): String? = signType
-
     fun setSignType(signType: String?): AliAuthReq = apply { this.signType = signType }
-
-    fun getSign(): String? = sign
 
     fun setSign(sign: String?): AliAuthReq = apply { this.sign = sign }
 }

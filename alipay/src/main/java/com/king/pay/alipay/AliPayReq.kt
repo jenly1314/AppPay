@@ -70,43 +70,23 @@ open class AliPayReq {
     var bizContent: String? = null
         private set
 
-    fun getAppId(): String? = appId
-
     fun setAppId(appId: String?): AliPayReq = apply { this.appId = appId }
-
-    fun getMethod(): String = method
 
     fun setMethod(method: String): AliPayReq = apply { this.method = method }
 
-    fun getFormat(): String = format
-
     fun setFormat(format: String): AliPayReq = apply { this.format = format }
-
-    fun getCharset(): String = charset
 
     fun setCharset(charset: String): AliPayReq = apply { this.charset = charset }
 
-    fun getSignType(): String = signType
-
     fun setSignType(signType: String): AliPayReq = apply { this.signType = signType }
-
-    fun getSign(): String? = sign
 
     fun setSign(sign: String?): AliPayReq = apply { this.sign = sign }
 
-    fun getTimestamp(): String? = timestamp
-
     fun setTimestamp(timestamp: String?): AliPayReq = apply { this.timestamp = timestamp }
-
-    fun getVersion(): String = version
 
     fun setVersion(version: String): AliPayReq = apply { this.version = version }
 
-    fun getNotifyUrl(): String? = notifyUrl
-
     fun setNotifyUrl(notifyUrl: String?): AliPayReq = apply { this.notifyUrl = notifyUrl }
-
-    fun getBizContent(): String? = bizContent
 
     fun setBizContent(bizContent: String?): AliPayReq = apply { this.bizContent = bizContent }
 }

@@ -52,31 +52,17 @@ open class WXPayReq {
     var sign: String? = null
         private set
 
-    fun getAppId(): String? = appId
-
     fun setAppId(appId: String?): WXPayReq = apply { this.appId = appId }
-
-    fun getPartnerId(): String? = partnerId
 
     fun setPartnerId(partnerId: String?): WXPayReq = apply { this.partnerId = partnerId }
 
-    fun getPrepayId(): String? = prepayId
-
     fun setPrepayId(prepayId: String?): WXPayReq = apply { this.prepayId = prepayId }
-
-    fun getPackageValue(): String = packageValue
 
     fun setPackageValue(packageValue: String): WXPayReq = apply { this.packageValue = packageValue }
 
-    fun getNonceStr(): String? = nonceStr
-
     fun setNonceStr(nonceStr: String?): WXPayReq = apply { this.nonceStr = nonceStr }
 
-    fun getTimestamp(): String? = timestamp
-
     fun setTimestamp(timestamp: String?): WXPayReq = apply { this.timestamp = timestamp }
-
-    fun getSign(): String? = sign
 
     fun setSign(sign: String?): WXPayReq = apply { this.sign = sign }
 
