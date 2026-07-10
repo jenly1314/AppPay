@@ -39,19 +39,4 @@ open class AliPayResult(rawResult: Map<String, String>?) {
      * 是否成功；判断resultStatus 为9000则代表支付成功；该笔订单是否真实支付成功，需要依赖服务端的异步通知。
      */
     fun isSuccess(): Boolean = TextUtils.equals(resultStatus, "9000")
-
-    /**
-     * @return the resultStatus
-     */
-    fun getResultStatus(): String? = resultStatus
-
-    /**
-     * @return the memo
-     */
-    fun getMemo(): String? = memo
-
-    /**
-     * @return the result
-     */
-    fun getResult(): String? = result
 }

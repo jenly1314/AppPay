@@ -82,34 +82,4 @@ open class AliAuthResult(rawResult: Map<String, String>?, removeBrackets: Boolea
     private fun getValue(header: String, data: String): String {
         return data.substring(header.length, data.length)
     }
-
-    /**
-     * @return the resultStatus
-     */
-    fun getResultStatus(): String? = resultStatus
-
-    /**
-     * @return the memo
-     */
-    fun getMemo(): String? = memo
-
-    /**
-     * @return the result
-     */
-    fun getResult(): String? = result
-
-    /**
-     * @return the resultCode
-     */
-    fun getResultCode(): String? = resultCode
-
-    /**
-     * @return the authCode
-     */
-    fun getAuthCode(): String? = authCode
-
-    /**
-     * @return the alipayOpenId
-     */
-    fun getAlipayOpenId(): String? = alipayOpenId
 }
