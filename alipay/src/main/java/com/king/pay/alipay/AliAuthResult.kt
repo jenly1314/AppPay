@@ -35,7 +35,7 @@ open class AliAuthResult(rawResult: Map<String, String>?, removeBrackets: Boolea
                 }
             }
 
-            val resultValue = if (!result.isNullOrEmpty()) result.split("&") else emptyList()
+            val resultValue = result?.split("&") ?: emptyList()
             for (value in resultValue) {
                 when {
                     value.startsWith("alipay_open_id") -> {
