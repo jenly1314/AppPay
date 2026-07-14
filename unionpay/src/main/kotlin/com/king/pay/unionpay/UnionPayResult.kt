@@ -7,7 +7,7 @@ package com.king.pay.unionpay
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-open class UnionPayResult internal constructor(
+data class UnionPayResult(
     private val success: Boolean,
     private val message: String?
 ) {
@@ -22,10 +22,4 @@ open class UnionPayResult internal constructor(
      */
     fun getMessage(): String? = message
 
-    override fun toString(): String {
-        return "UnionPayResult{" +
-                "success=$success" +
-                ", message='$message'" +
-                '}'
-    }
 }

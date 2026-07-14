@@ -16,16 +16,15 @@ import java.util.concurrent.Executors
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AliPay(private var mActivity: Activity) {
+open class AliPay(private val activity: Activity) {
 
-    private val mHandler: Handler = Handler(Looper.getMainLooper())
+    private val handler = Handler(Looper.getMainLooper())
 
-    private var mOnAuthListener: OnAuthListener? = null
+    private var onAuthListener: OnAuthListener? = null
 
-    private var mOnPayListener: OnPayListener? = null
+    private var onPayListener: OnPayListener? = null
 
-    private val mExecutor: Executor = Executors.newSingleThreadExecutor()
+    private val executor = Executors.newSingleThreadExecutor()
 
     /**
      * 发送支付请求，因为订单参数与签名加密前内容关联密切，所以强烈建议服务端直接返回拼接后的orderInfo，使用[sendReq]
@@ -40,15 +39,15 @@ open class AliPay(private var mActivity: Activity) {
      * @param orderInfo 订单信息
      */
     fun sendReq(orderInfo: String) {
-        mExecutor.execute {
-            val aliPay = PayTask(mActivity)
+        executor.execute {
+            val aliPay = PayTask(activity)
             val result = aliPay.payV2(orderInfo, true)
             val aliPayResult = AliPayResult(result)
 
             // 对于支付结果，请商户依赖服务端的异步通知结果。此处的同步通知结果，仅作为支付结束的通知。
-            mHandler.post {
+            handler.post {
                 // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                mOnPayListener?.onPayResult(aliPayResult)
+                onPayListener?.onPayResult(aliPayResult)
             }
         }
     }
@@ -77,15 +76,15 @@ open class AliPay(private var mActivity: Activity) {
      * @param authInfo 授权信息
      */
     fun checkAuth(authInfo: String) {
-        mExecutor.execute {
+        executor.execute {
             // 构造AuthTask 对象
-            val authTask = AuthTask(mActivity)
+            val authTask = AuthTask(activity)
             // 调用授权接口，获取授权结果
             val result = authTask.authV2(authInfo, true)
             val aliAuthResult = AliAuthResult(result, true)
 
-            mHandler.post {
-                mOnAuthListener?.onAuthResult(aliAuthResult)
+            handler.post {
+                onAuthListener?.onAuthResult(aliAuthResult)
             }
         }
     }
@@ -107,7 +106,7 @@ open class AliPay(private var mActivity: Activity) {
      * @param listener 监听器
      */
     fun setOnAuthListener(listener: OnAuthListener): AliPay {
-        this.mOnAuthListener = listener
+        this.onAuthListener = listener
         return this
     }
 
@@ -117,7 +116,7 @@ open class AliPay(private var mActivity: Activity) {
      * @param listener 监听器
      */
     fun setOnPayListener(listener: OnPayListener): AliPay {
-        this.mOnPayListener = listener
+        this.onPayListener = listener
         return this
     }
 

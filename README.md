@@ -42,16 +42,16 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 2. 在Module的 **build.gradle** 中添加依赖项
    ```gradle
        // WXPay
-       implementation 'com.github.jenly1314.AppPay:wxpay:2.1.0'
+       implementation 'com.github.jenly1314.AppPay:wxpay:2.2.0'
 
        // AliPay
-       implementation 'com.github.jenly1314.AppPay:alipay:2.1.0'
+       implementation 'com.github.jenly1314.AppPay:alipay:2.2.0'
 
        // UnionPay
-       implementation 'com.github.jenly1314.AppPay:unionpay:2.1.0'
+       implementation 'com.github.jenly1314.AppPay:unionpay:2.2.0'
 
        // AppPay
-       implementation 'com.github.jenly1314.AppPay:apppay:2.1.0'
+       implementation 'com.github.jenly1314.AppPay:apppay:2.2.0'
    ```
 
 ## 使用
@@ -366,19 +366,21 @@ mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 [微信支付Android接入指南](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Access_Guide/Android.html)
 
-[支付宝支付Android接入指南](https://opendocs.alipay.com/open/204/105296)
+[支付宝支付Android接入指南](https://opendocs.alipay.com/open/00dn75)
 
-[银联支付Android接入指南](doc/银联支付接入指南Android_v1.0.9.pdf)
+[银联支付Android接入指南](doc/中国银联线上收银台支付控件接入指南Android.pdf)
 
 <!-- end -->
 
 ## 版本日志
 
-#### v2.1.0 ：2023-09-24
-* 简化集成步骤
-* 优化细节（统一结果判定）
+#### v2.2.0 ：2026-07-14
+- 迁移：所有 Java 代码已转为 Kotlin 实现
+- 更新支付宝支付SDK依赖至v15.8.42
+- 更新微信支付SDK依赖至v6.8.34
+- 更新银联支付SDK依赖至v1.1.0
 
-#### [查看更多日志](CHANGELOG.md)
+#### [查看更多版本日志](CHANGELOG.md)
 
 
 ---

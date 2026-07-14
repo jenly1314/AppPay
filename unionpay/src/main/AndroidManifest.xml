@@ -6,7 +6,6 @@
             android:name="com.unionpay.UPPayWapActivity"
             android:configChanges="orientation|keyboardHidden"
             android:exported="false"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog"
             android:windowSoftInputMode="adjustResize" />
     </application>

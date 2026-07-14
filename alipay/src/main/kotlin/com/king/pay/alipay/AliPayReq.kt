@@ -7,8 +7,7 @@ package com.king.pay.alipay
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AliPayReq {
+class AliPayReq {
 
     /**
      * 支付宝支付分配的应用ID

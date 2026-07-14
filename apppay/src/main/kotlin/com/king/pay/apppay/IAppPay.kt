@@ -12,7 +12,6 @@ import com.king.pay.wxpay.WXPayReq
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
 interface IAppPay {
 
     /**

@@ -9,8 +9,7 @@ import android.text.TextUtils
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AliPayResult(rawResult: Map<String, String>?) {
+class AliPayResult(rawResult: Map<String, String>?) {
 
     var resultStatus: String? = null
         private set

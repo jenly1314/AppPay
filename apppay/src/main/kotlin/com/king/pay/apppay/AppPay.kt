@@ -15,26 +15,25 @@ import com.king.pay.wxpay.WXPayReq
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AppPay(private var mActivity: Activity) : IAppPay {
+open class AppPay(private var activity: Activity) : IAppPay {
 
     @Volatile
-    private var mWXPay: WXPay? = null
+    private var wxPay: WXPay? = null
 
     @Volatile
-    private var mAliPay: AliPay? = null
+    private var aliPay: AliPay? = null
 
     @Volatile
-    private var mUnionPay: UnionPay? = null
+    private var unionPay: UnionPay? = null
 
     /**
      * 初始化WXPay
      */
     private fun initWXPay(context: Context) {
-        if (mWXPay == null) {
+        if (wxPay == null) {
             synchronized(AppPay::class.java) {
-                if (mWXPay == null) {
-                    mWXPay = WXPay(context)
+                if (wxPay == null) {
+                    wxPay = WXPay(context)
                 }
             }
         }
@@ -44,10 +43,10 @@ open class AppPay(private var mActivity: Activity) : IAppPay {
      * 初始化AliPay
      */
     private fun initAliPay(activity: Activity) {
-        if (mAliPay == null) {
+        if (aliPay == null) {
             synchronized(AppPay::class.java) {
-                if (mAliPay == null) {
-                    mAliPay = AliPay(activity)
+                if (aliPay == null) {
+                    aliPay = AliPay(activity)
                 }
             }
         }
@@ -57,10 +56,10 @@ open class AppPay(private var mActivity: Activity) : IAppPay {
      * 初始化UnionPay
      */
     private fun initUnionPay(activity: Activity) {
-        if (mUnionPay == null) {
+        if (unionPay == null) {
             synchronized(AppPay::class.java) {
-                if (mUnionPay == null) {
-                    mUnionPay = UnionPay(activity)
+                if (unionPay == null) {
+                    unionPay = UnionPay(activity)
                 }
             }
         }
@@ -149,23 +148,23 @@ open class AppPay(private var mActivity: Activity) : IAppPay {
      * 获取 AliPay
      */
     fun getAliPay(): AliPay {
-        initAliPay(mActivity)
-        return mAliPay!!
+        initAliPay(activity)
+        return aliPay!!
     }
 
     /**
      * 获取 WXPay
      */
     fun getWXPay(): WXPay {
-        initWXPay(mActivity)
-        return mWXPay!!
+        initWXPay(activity)
+        return wxPay!!
     }
 
     /**
      * 获取 UnionPay
      */
     fun getUnionPay(): UnionPay {
-        initUnionPay(mActivity)
-        return mUnionPay!!
+        initUnionPay(activity)
+        return unionPay!!
     }
 }

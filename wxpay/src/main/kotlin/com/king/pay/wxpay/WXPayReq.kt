@@ -7,8 +7,7 @@ package com.king.pay.wxpay
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class WXPayReq {
+class WXPayReq {
 
     /**
      * appId
@@ -52,19 +51,19 @@ open class WXPayReq {
     var sign: String? = null
         private set
 
-    fun setAppId(appId: String?): WXPayReq = apply { this.appId = appId }
+    fun setAppId(appId: String): WXPayReq = apply { this.appId = appId }
 
-    fun setPartnerId(partnerId: String?): WXPayReq = apply { this.partnerId = partnerId }
+    fun setPartnerId(partnerId: String): WXPayReq = apply { this.partnerId = partnerId }
 
-    fun setPrepayId(prepayId: String?): WXPayReq = apply { this.prepayId = prepayId }
+    fun setPrepayId(prepayId: String): WXPayReq = apply { this.prepayId = prepayId }
 
     fun setPackageValue(packageValue: String): WXPayReq = apply { this.packageValue = packageValue }
 
-    fun setNonceStr(nonceStr: String?): WXPayReq = apply { this.nonceStr = nonceStr }
+    fun setNonceStr(nonceStr: String): WXPayReq = apply { this.nonceStr = nonceStr }
 
-    fun setTimestamp(timestamp: String?): WXPayReq = apply { this.timestamp = timestamp }
+    fun setTimestamp(timestamp: String): WXPayReq = apply { this.timestamp = timestamp }
 
-    fun setSign(sign: String?): WXPayReq = apply { this.sign = sign }
+    fun setSign(sign: String): WXPayReq = apply { this.sign = sign }
 
     override fun toString(): String {
         return "WXPayReq{" +

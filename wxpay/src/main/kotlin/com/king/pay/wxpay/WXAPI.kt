@@ -12,19 +12,19 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-open class WXAPI private constructor(context: Context) {
+class WXAPI private constructor(context: Context) {
 
-    private val mApi: IWXAPI = WXAPIFactory.createWXAPI(context, null)
+    private val api: IWXAPI = WXAPIFactory.createWXAPI(context, null)
 
     private var registerApp: Boolean = false
 
     private var appId: String? = null
 
-    private var mOnPayListener: WXPay.OnPayListener? = null
+    private var onPayListener: WXPay.OnPayListener? = null
 
     companion object {
         @Volatile
-        private var sInstance: WXAPI? = null
+        private var instance: WXAPI? = null
 
         /**
          * 获取单例
@@ -34,8 +34,8 @@ open class WXAPI private constructor(context: Context) {
          */
         @JvmStatic
         fun getInstance(context: Context): WXAPI {
-            return sInstance ?: synchronized(WXAPI::class.java) {
-                sInstance ?: WXAPI(context).also { sInstance = it }
+            return instance ?: synchronized(WXAPI::class.java) {
+                instance ?: WXAPI(context).also { instance = it }
             }
         }
     }
@@ -45,10 +45,10 @@ open class WXAPI private constructor(context: Context) {
      *
      * @param appId 申请的微信appId
      */
-    fun registerApp(appId: String?): WXAPI {
+    fun registerApp(appId: String): WXAPI {
         if (!(registerApp && TextUtils.equals(this.appId, appId))) {
             this.appId = appId
-            registerApp = mApi.registerApp(appId)
+            registerApp = api.registerApp(appId)
         }
         return this
     }
@@ -56,13 +56,13 @@ open class WXAPI private constructor(context: Context) {
     /**
      * 获取 [IWXAPI]
      */
-    fun getApi(): IWXAPI = mApi
+    fun getApi(): IWXAPI = api
 
     /**
      * 设置支付监听
      */
     fun setOnPayListener(listener: WXPay.OnPayListener?): WXAPI {
-        this.mOnPayListener = listener
+        this.onPayListener = listener
         return this
     }
 
@@ -73,9 +73,7 @@ open class WXAPI private constructor(context: Context) {
      * @param errorMessage
      */
     fun onResp(code: Int, errorMessage: String?) {
-        mOnPayListener?.let {
-            it.onPayResult(WXPayResult(code, errorMessage))
-            mOnPayListener = null
-        }
+        onPayListener?.onPayResult(WXPayResult(code, errorMessage))
+        onPayListener = null
     }
 }

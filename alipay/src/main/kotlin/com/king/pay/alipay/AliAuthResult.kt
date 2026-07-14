@@ -9,8 +9,7 @@ import android.text.TextUtils
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AliAuthResult(rawResult: Map<String, String>?, removeBrackets: Boolean) {
+class AliAuthResult(rawResult: Map<String, String>?, removeBrackets: Boolean) {
 
     var resultStatus: String? = null
         private set

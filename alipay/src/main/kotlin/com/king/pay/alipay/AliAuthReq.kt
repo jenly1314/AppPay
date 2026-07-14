@@ -7,8 +7,7 @@ package com.king.pay.alipay
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class AliAuthReq {
+class AliAuthReq {
 
     /**
      * 商户签约拿到的app_id

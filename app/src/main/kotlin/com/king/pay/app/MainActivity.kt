@@ -16,20 +16,20 @@ import com.king.pay.wxpay.WXPayReq
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-open class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    lateinit var mAppPay: AppPay
+    private lateinit var appPay: AppPay
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mAppPay = AppPay(this)
+        appPay = AppPay(this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         // 当使用银联支付时，需要在 Activity 中的 onActivityResult 方法中调用此方法，来接收支付结果监听回调
-        mAppPay.onActivityResult(requestCode, resultCode, data)
+        appPay.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun showToast(text: String) {
@@ -46,7 +46,7 @@ open class MainActivity : AppCompatActivity() {
         // 微信请求相关属性务必放在服务端，通过预支付下单接口返回相关参数，这样比较安全。
         val req = WXPayReq()
 //       req.setAppId("")
-//       mAppPay.sendWXPayReq(req, object : WXPay.OnPayListener {
+//       appPay.sendWXPayReq(req, object : WXPay.OnPayListener {
 //           override fun onPayResult(result: WXPayResult) {
 //               // 支付结果
 //               if (result.isSuccess()) {
@@ -69,7 +69,7 @@ open class MainActivity : AppCompatActivity() {
         // TODO  配置好支付宝支付请求订单信息相关的参数,发送支付宝支付请求（订单信息一般从后台获取）
 
 //        val orderInfo = ""
-//        mAppPay.sendAliPayReq(orderInfo, object : AliPay.OnPayListener {
+//        appPay.sendAliPayReq(orderInfo, object : AliPay.OnPayListener {
 //            override fun onPayResult(result: AliPayResult) {
 //                // 支付结果
 //                if (result.isSuccess()) {
@@ -90,7 +90,7 @@ open class MainActivity : AppCompatActivity() {
         // TODO 银联支付；订单信息为交易流水号，即TN，为商户后台从银联后台获取。
 
 //        val orderInfo = ""
-//        mAppPay.sendUnionPayReq(orderInfo, object : UnionPay.OnPayListener {
+//        appPay.sendUnionPayReq(orderInfo, object : UnionPay.OnPayListener {
 //            override fun onPayResult(result: UnionPayResult) {
 //
 //            }
@@ -100,8 +100,7 @@ open class MainActivity : AppCompatActivity() {
     }
 
     fun onClick(v: View) {
-        val id = v.id
-        when (id) {
+        when (v.id) {
             R.id.btnWXPay -> clickBtnWXPay()
             R.id.btnAliPay -> clickBtnAliPay()
             R.id.btnUnionPay -> clickBtnUnionPay()

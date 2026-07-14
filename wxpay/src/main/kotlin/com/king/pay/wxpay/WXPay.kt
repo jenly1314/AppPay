@@ -10,10 +10,9 @@ import com.tencent.mm.opensdk.modelpay.PayReq
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class WXPay(private var mContext: Context) {
+open class WXPay(private var context: Context) {
 
-    private var mOnPayListener: OnPayListener? = null
+    private var onPayListener: OnPayListener? = null
 
     /**
      * 构造
@@ -50,9 +49,9 @@ open class WXPay(private var mContext: Context) {
      */
     fun sendReq(req: PayReq) {
         if (req.checkArgs()) {
-            WXAPI.getInstance(mContext)
+            WXAPI.getInstance(context)
                 .registerApp(req.appId)
-                .setOnPayListener(mOnPayListener)
+                .setOnPayListener(onPayListener)
                 .getApi()
                 .sendReq(req)
         }
@@ -85,9 +84,9 @@ open class WXPay(private var mContext: Context) {
      *
      * @param listener 监听器
      */
-    fun setOnPayListener(listener: OnPayListener?) {
-        this.mOnPayListener = listener
-        WXAPI.getInstance(mContext).setOnPayListener(mOnPayListener)
+    fun setOnPayListener(listener: OnPayListener) {
+        this.onPayListener = listener
+        WXAPI.getInstance(context).setOnPayListener(onPayListener)
     }
 
     /**

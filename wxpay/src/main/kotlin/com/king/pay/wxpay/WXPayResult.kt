@@ -7,7 +7,7 @@ package com.king.pay.wxpay
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-open class WXPayResult internal constructor(
+data class WXPayResult(
     private val code: Int,
     private val message: String?
 ) {
@@ -28,11 +28,5 @@ open class WXPayResult internal constructor(
      * 结果信息
      */
     fun getMessage(): String? = message
-
-    override fun toString(): String {
-        return "WXPayResult{" +
-                "code=$code" +
-                ", message='$message'" +
-                '}'
-    }
+    
 }

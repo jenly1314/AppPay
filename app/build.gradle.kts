@@ -11,8 +11,9 @@ android {
         applicationId = "com.king.pay.app"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = properties["VERSION_CODE"]?.toString()?.toInt() ?: 1
-        versionName = properties["VERSION_NAME"]?.toString() ?: "1.0.0"
+
+        versionCode = properties["VERSION_CODE"]?.toString()?.toInt()
+        versionName = properties["VERSION_NAME"]?.toString()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

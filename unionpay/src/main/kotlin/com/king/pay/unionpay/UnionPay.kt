@@ -12,10 +12,9 @@ import com.unionpay.UPPayAssistEx
  * <p>
  * <a href="https://github.com/jenly1314">Follow me</a>
  */
-@Suppress("unused")
-open class UnionPay(private var mContext: Context) {
+open class UnionPay(private var context: Context) {
 
-    private var mOnPayListener: OnPayListener? = null
+    private var onPayListener: OnPayListener? = null
 
     /**
      * 发送支付请求；
@@ -24,7 +23,7 @@ open class UnionPay(private var mContext: Context) {
      * @param serverMode 银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：[PRO_SERVER_MODE] 和 [TEST_SERVER_MODE]
      */
     fun sendReq(orderInfo: String, serverMode: String) {
-        UPPayAssistEx.startPay(mContext, null, null, orderInfo, serverMode)
+        UPPayAssistEx.startPay(context, null, null, orderInfo, serverMode)
     }
 
     /**
@@ -36,19 +35,26 @@ open class UnionPay(private var mContext: Context) {
      */
     fun sendReq(orderInfo: String, serverMode: String, listener: OnPayListener) {
         setOnPayListener(listener)
-        UPPayAssistEx.startPay(mContext, null, null, orderInfo, serverMode)
+        UPPayAssistEx.startPay(context, null, null, orderInfo, serverMode)
+    }
+
+    /**
+     * 在 [Activity] 中的 onActivityResult 方法中调用此方法，来接收支付结果监听回调
+     */
+    fun onActivityResult(data: Intent?) {
+        onActivityResult(0, 0, data)
     }
 
     /**
      * 在 [Activity] 中的 onActivityResult 方法中调用此方法，来接收支付结果监听回调
      */
     fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (data != null && mOnPayListener != null) {
+        if (data != null && onPayListener != null) {
             val result = data.getStringExtra(PAY_RESULT)
             if (PAY_SUCCESS.equals(result, ignoreCase = true)) {
-                mOnPayListener!!.onPayResult(UnionPayResult(true, result))
+                onPayListener!!.onPayResult(UnionPayResult(true, result))
             } else if (PAY_FAIL.equals(result, ignoreCase = true) || PAY_CANCEL.equals(result, ignoreCase = true)) {
-                mOnPayListener!!.onPayResult(UnionPayResult(false, result))
+                onPayListener!!.onPayResult(UnionPayResult(false, result))
             }
         }
     }
@@ -59,7 +65,7 @@ open class UnionPay(private var mContext: Context) {
      * @param listener 监听器
      */
     fun setOnPayListener(listener: OnPayListener) {
-        this.mOnPayListener = listener
+        this.onPayListener = listener
     }
 
     /**
