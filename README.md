@@ -6,7 +6,7 @@
 [![JitPack](https://img.shields.io/jitpack/v/github/jenly1314/AppPay?logo=jitpack)](https://jitpack.io/#jenly1314/AppPay)
 [![CI](https://img.shields.io/github/actions/workflow/status/jenly1314/AppPay/build.yml?logo=github)](https://github.com/jenly1314/AppPay/actions/workflows/build.yml)
 [![Download](https://img.shields.io/badge/download-APK-brightgreen?logo=github)](https://raw.githubusercontent.com/jenly1314/AppPay/master/app/release/app-release.apk)
-[![API](https://img.shields.io/badge/API-16%2B-brightgreen?logo=android)](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen?logo=android)](https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels)
 [![License](https://img.shields.io/github/license/jenly1314/AppPay?logo=open-source-initiative)](https://opensource.org/licenses/mit)
 
 
@@ -66,10 +66,10 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 
 ```Java
 // 初始化微信支付
-mWXPay = new WXPay(Context context);
+WXPay wxPay = new WXPay(context);
 
 // 设置微信支付监听
-mWXPay.setOnPayListener(new WXPay.OnPayListener() {
+wxPay.setOnPayListener(new WXPay.OnPayListener() {
    @Override
    public void onPayResult(WXPayResult result) {
       // 支付结果
@@ -80,14 +80,14 @@ mWXPay.setOnPayListener(new WXPay.OnPayListener() {
 });
 
 // 发送微信支付请求
-mWXPay.sendReq(WXPayReq req);
+wxPay.sendReq(WXPayReq req);
 
 ```
 或
 
 ```Java
 // 发送微信支付请求并监听（参数：req为拉起支付的请求参数）
-mWXPay.sendReq(req, new WXPay.OnPayListener() {
+wxPay.sendReq(req, new WXPay.OnPayListener() {
    @Override
    public void onPayResult(WXPayResult result) {
         // 支付结果
@@ -107,28 +107,28 @@ mWXPay.sendReq(req, new WXPay.OnPayListener() {
 ##### AliPay代码示例
 
 ```Java
- // 初始化支付宝支付
- mAliPay = new AliPay(Activity activity);
+// 初始化支付宝支付
+AliPay aliPay = new AliPay(activity);
 
- // 设置支付宝支付监听
- mAliPay.setOnPayListener(new AliPay.OnPayListener() {
-     @Override
-     public void onPayResult(AliPayResult result) {
-         // 支付结果
-         if(result.isSuccess()){
-             //TODO 支付成功
-         }
+// 设置支付宝支付监听
+aliPay.setOnPayListener(new AliPay.OnPayListener() {
+ @Override
+ public void onPayResult(AliPayResult result) {
+     // 支付结果
+     if(result.isSuccess()){
+         //TODO 支付成功
      }
- });
+ }
+});
 
- // 发送支付宝支付请求；
- mAliPay.sendReq(String orderInfo);
+// 发送支付宝支付请求；
+aliPay.sendReq(String orderInfo);
 
 ```
 或
 ```Java
 // 发送支付宝支付请求并监听（参数：orderInfo为拉起支付的订单信息）
-mAliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
+aliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
     @Override
     public void onPayResult(AliPayResult result) {
         // 支付结果
@@ -148,27 +148,27 @@ mAliPay.sendReq(orderInfo, new AliPay.OnPayListener() {
 #### UnionPay代码示例
 
 ```java
- // 初始化银联支付
- mUnionPay = new UnionPay(Context context);
+// 初始化银联支付
+UnionPay unionPay = new UnionPay(context);
 
- // 设置银联支付监听
- mUnionPay.setOnPayListener(new UnionPay.OnPayListener() {
-     @Override
-     public void onPayResult(UnionPayResult result) {
-         // 支付结果
-         if(result.isSuccess()){
-             //TODO 支付成功
-         }
+// 设置银联支付监听
+unionPay.setOnPayListener(new UnionPay.OnPayListener() {
+ @Override
+ public void onPayResult(UnionPayResult result) {
+     // 支付结果
+     if(result.isSuccess()){
+         //TODO 支付成功
      }
- });
+ }
+});
 
- // 发送银联支付请求；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
- mUnionPay.sendReq(String orderInfo, String serverMode);
+// 发送银联支付请求；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
+unionPay.sendReq(String orderInfo, String serverMode);
 ```
 或
 ```java
 // 发送银联支付请求并监听；（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
-mUnionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
+unionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
     @Override
     public void onPayResult(UnionPayResult result) {
         // 支付结果
@@ -189,11 +189,11 @@ mUnionPay.sendReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
 
 ```Java
 
- // 初始化AppPay
- mAppPay = new AppPay(Activity activity);
+// 初始化AppPay
+AppPay appPay = new AppPay(activity);
 
 // 发送微信支付请求（参数：req为拉起支付的请求参数）
-mAppPay.sendWXPayReq(req, new WXPay.OnPayListener() {
+appPay.sendWXPayReq(req, new WXPay.OnPayListener() {
     @Override
     public void onPayResult(WXPayResult result) {
          // 支付结果
@@ -205,7 +205,7 @@ mAppPay.sendWXPayReq(req, new WXPay.OnPayListener() {
 
 
 // 发送支付宝支付请求（参数：orderInfo为拉起支付的订单信息）
-mAppPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
+appPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
     @Override
     public void onPayResult(AliPayResult result) {
          // 支付结果
@@ -217,7 +217,7 @@ mAppPay.sendAliPayReq(orderInfo, new AliPay.OnPayListener() {
 
 
 // 发送银联支付请求（参数：orderInfo为订单信息的流水号，即TN；serverMode为银联后台环境标识；用于区分使用测试环境还是正式环境；说明参见：UnionPay.PRO_SERVER_MODE 和 UnionPay.TEST_SERVER_MODE）
-mAppPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
+appPay.sendUnionPayReq(orderInfo, serverMode, new UnionPay.OnPayListener() {
     @Override
     public void onPayResult(UnionPayResult result) {
          // 支付结果
