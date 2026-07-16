@@ -41,17 +41,17 @@ AppPay for Android 是一个专注于App支付的库，将主流的官方App支�
 
 2. 在Module的 **build.gradle** 中添加依赖项
    ```gradle
-       // WXPay
-       implementation 'com.github.jenly1314.AppPay:wxpay:2.2.0'
+   // WXPay
+   implementation 'com.github.jenly1314.AppPay:wxpay:2.2.0'
 
-       // AliPay
-       implementation 'com.github.jenly1314.AppPay:alipay:2.2.0'
+   // AliPay
+   implementation 'com.github.jenly1314.AppPay:alipay:2.2.0'
 
-       // UnionPay
-       implementation 'com.github.jenly1314.AppPay:unionpay:2.2.0'
+   // UnionPay
+   implementation 'com.github.jenly1314.AppPay:unionpay:2.2.0'
 
-       // AppPay
-       implementation 'com.github.jenly1314.AppPay:apppay:2.2.0'
+   // AppPay
+   implementation 'com.github.jenly1314.AppPay:apppay:2.2.0'
    ```
 
 ## 使用
